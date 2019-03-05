@@ -1,5 +1,15 @@
 package mum.mpp.model;
 
-public class BookCopy {
-	private String copyNumber;
+import java.io.Serializable;
+
+public class BookCopy implements Serializable {
+	private String copyId;
+
+	public String getCopyId() {
+		return copyId;
+	}
+
+	public void setCopyId(String copyId) {
+		this.copyId = copyId;
+	}
 }
