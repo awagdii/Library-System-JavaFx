@@ -3,50 +3,61 @@ package mum.mpp.model;
 import java.io.Serializable;
 
 public class Person implements Serializable {
+	
+	private String firstName;
+	private String lastName;
+	private String phoneNumber;
+	private Address address;
 
-   public enum MemberAuthorization{
-		ADMIN,
-		LIBRARIAN,
-		BOTH
-   }
- 
+	public Person() {
+	}
 
-   public String getFirstName() {
+	public Person(String firstName, String lastName, String phoneNumber, Address address) {
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.phoneNumber = phoneNumber;
+		this.address = address;
+	}
+
+	public String getFirstName() {
 		return firstName;
 	}
+
 	public void setFirstName(String firstName) {
 		this.firstName = firstName;
 	}
-	public String getLastname() {
-		return lastname;
+
+	public String getLastName() {
+		return lastName;
 	}
-	public void setLastname(String lastname) {
-		this.lastname = lastname;
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
 	}
+
 	public String getPhoneNumber() {
 		return phoneNumber;
 	}
+
 	public void setPhoneNumber(String phoneNumber) {
 		this.phoneNumber = phoneNumber;
 	}
+
 	public Address getAddress() {
 		return address;
 	}
+
 	public void setAddress(Address address) {
 		this.address = address;
 	}
-	public MemberAuthorization getAuthorizationLevel() {
-		return authorizationLevel;
-	}
-	void setAuthorizationLevel(MemberAuthorization authorizationLevel) {
-		this.authorizationLevel = authorizationLevel;
-	}
 
-	
-	private String firstName;
-	private String lastname;
-	private String phoneNumber;
-	private Address address;
-	private MemberAuthorization authorizationLevel;
-	
+	@Override
+	public String toString() {
+		return "Person{" +
+				"firstName='" + firstName + '\'' +
+				", lastName='" + lastName + '\'' +
+				", phoneNumber='" + phoneNumber + '\'' +
+				", address=" + address +
+				'}';
+	}
 }
