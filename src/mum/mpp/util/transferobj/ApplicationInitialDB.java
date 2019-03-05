@@ -15,25 +15,26 @@ public class ApplicationInitialDB {
         // TODO Auto-generated constructor stub
     }
 
-    public static final List<LibraryMember> librarians = new ArrayList<>();
-    public static final List<Administrator> administrators = new ArrayList<>();
-    public static final List<Book> books = new ArrayList<>();
-
+    public static  List<LibraryMember> librarians = new ArrayList<>();
+    public static  List<SuperAdministrator> superAdministrators = new ArrayList<>();
+    public static  List<Book> books = new ArrayList<>();
+    public static  List<Administrator> administrators = new ArrayList<>();
+    
+    
     public static ApplicationInitialDB loadInitialDB() {
         File file = new File(IConstants.SERIALIZATION_ROOT_FOLDER);
         File[] dataFiles = file.listFiles();
         ApplicationInitialDB aid = new ApplicationInitialDB();
         for (File tempF : dataFiles) {
-            if (tempF.getName().startsWith(IConstants.SERIALIZATION_BOOK_FILENAME_PREFIX)) {
-                Book b = LibraryUtil.readSerializedObject(tempF.getName());
-                books.add(b);
-            } else if (tempF.getName().startsWith(IConstants.SERIALIZATION_LIB_FILENAME_PREFIX)) {
-                LibraryMember lm = LibraryUtil.readSerializedObject(tempF.getName());
-                librarians.add(lm);
-            } else if ((tempF.getName().startsWith(IConstants.SERIALIZATION_ADMIN_FILENAME_PREFIX))) {
-                Administrator a = LibraryUtil.readSerializedObject(tempF.getName());
-                administrators.add(a);
-            }
+            if (tempF.getName().equals(IConstants.SERIALIZATION_BOOK_FILENAME)) {
+                books=LibraryUtil.readSerializedObject(tempF.getName());
+            } else if (tempF.getName().equals(IConstants.SERIALIZATION_LIB_FILENAME)) {
+            	librarians = LibraryUtil.readSerializedObject(tempF.getName());
+            } else if ((tempF.getName().equals(IConstants.SERIALIZATION_SUPER_ADMIN_FILENAME))) {
+                superAdministrators=LibraryUtil.readSerializedObject(tempF.getName());
+            }else if ((tempF.getName().equals(IConstants.SERIALIZATION_ADMIN_FILENAME))) {
+                administrators=LibraryUtil.readSerializedObject(tempF.getName());
+            }   
 
         }
 
@@ -41,8 +42,14 @@ public class ApplicationInitialDB {
     }
 
     public static void prepareSomeInitialData() {
-        //Add Administrator One
-        Administrator admin = new Administrator();
+        
+    	
+    	//TODO Add new Administrator Objects and Sealize them to the Initial DB
+    	//TODO Set User Name Password Per User (Admin - Super Admin - Lib Member)
+      
+    	
+    	//Add Administrator One
+        SuperAdministrator admin = new SuperAdministrator();
         admin.setFirstName("Anglo");
         admin.setLastName("Andro");
         admin.setPhoneNumber("+1(641)-76630932");
@@ -52,11 +59,12 @@ public class ApplicationInitialDB {
         address.setZip("52557");
         address.setStreet("1000Nth 4th Street");
         admin.setAddress(address);
-        LibraryUtil.writeSerializedObject(admin, "Administrator_1.txt");
-
+        
+        
+        
 
         //Add Administrator One
-        Administrator admin1 = new Administrator();
+        SuperAdministrator admin1 = new SuperAdministrator();
         admin.setFirstName("Kefin");
         admin.setLastName("Mark");
         admin.setPhoneNumber("+1(641)-76600932");
@@ -66,8 +74,13 @@ public class ApplicationInitialDB {
         address1.setZip("129837");
         address1.setStreet("10Nth 8th Street");
         admin1.setAddress(address);
-        LibraryUtil.writeSerializedObject(admin, "Administrator_2.txt");
-
+       
+        
+        ArrayList<SuperAdministrator> admins=new ArrayList<>();
+        LibraryUtil.writeSerializedObject(admins, "SuperAdministrators");
+        
+        
+        
         Book book1 = new Book();
         book1.setTitle("Secret Of Life");
         book1.setIsbn("12");
@@ -95,8 +108,7 @@ public class ApplicationInitialDB {
         ArrayList<Author> authors = new ArrayList<>();
         authors.add(author);
         book1.setAuthorList(authors);
-        LibraryUtil.writeSerializedObject(book1, "Book_1.txt");
-
+       
         Book book2 = new Book();
         book1.setTitle("Foot Art");
         book1.setIsbn("20");
@@ -124,8 +136,7 @@ public class ApplicationInitialDB {
         ArrayList<Author> authors2 = new ArrayList<>();
         authors2.add(author2);
         book2.setAuthorList(authors2);
-        LibraryUtil.writeSerializedObject(book2, "Book_2.txt");
-
+     
         Book book3 = new Book();
         book3.setTitle("TM Technique");
         book3.setIsbn("27");
@@ -153,8 +164,18 @@ public class ApplicationInitialDB {
         ArrayList<Author> authors3 = new ArrayList<>();
         authors3.add(author3);
         book3.setAuthorList(authors3);
-        LibraryUtil.writeSerializedObject(book3, "Book_3.txt");
+     
+        
+        
+        ArrayList<Book> books=new ArrayList<>();
+        books.add(book1);
+        books.add(book2);
+        books.add(book3);
+       
+        LibraryUtil.writeSerializedObject(books, "Books.txt");
 
+        
+        
         LibraryMember libM1 = new LibraryMember();
         libM1.setFirstName("Kai");
         libM1.setLastName("Wang");
@@ -165,6 +186,8 @@ public class ApplicationInitialDB {
 
 
         CheckoutRecord record1 = new CheckoutRecord();
+        
+        
         CheckoutEntry coe1 = new CheckoutEntry();
         coe1.setBookCopy(bookcopy3);
         coe1.setCheckoutDate(LocalDate.of(2019, 3, 01));
@@ -187,10 +210,11 @@ public class ApplicationInitialDB {
         checkOutEntries.add(coe2);
         checkOutEntries.add(coe3);
         record1.setCheckOutEntries(checkOutEntries);
+        
+        
+        libM1.setCheckOutRecord(record1);
 
-
-        LibraryUtil.writeSerializedObject(libM1, "LibMember_1.txt");
-
+       
 
         LibraryMember libM2 = new LibraryMember();
         libM2.setFirstName("Wagdi");
@@ -199,9 +223,9 @@ public class ApplicationInitialDB {
         libM2.setPassword("123");
         libM2.setPhoneNumber("+1(641)-9712212");
         libM2.setAddress(address1);
-
-        LibraryUtil.writeSerializedObject(libM2, "LibMember_2.txt");
-
+        
+        
+       
         LibraryMember libM3 = new LibraryMember();
         libM3.setFirstName("Hesham");
         libM3.setLastName("Mahmoud");
@@ -209,6 +233,11 @@ public class ApplicationInitialDB {
         libM3.setPassword("123");
         libM3.setPhoneNumber("+1(641)-9712212");
         libM3.setAddress(address1);
-        LibraryUtil.writeSerializedObject(libM3, "LibMember_3.txt");
+        
+        
+        ArrayList<LibraryMember> libMems=new ArrayList<>();
+        
+        
+        LibraryUtil.writeSerializedObject(libMems, "LibMember.txt");
     }
 }

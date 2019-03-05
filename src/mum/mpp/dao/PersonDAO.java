@@ -17,7 +17,7 @@ public class PersonDAO implements IPersonDAO {
         // TODO Auto-generated method stub
         ArrayList<Person> ps = new ArrayList<>();
 
-        for (Administrator a : ApplicationInitialDB.administrators) {
+        for (SuperAdministrator a : ApplicationInitialDB.superAdministrators) {
             ps.add(a);
         }
         for (LibraryMember l : ApplicationInitialDB.librarians) {

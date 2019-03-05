@@ -7,10 +7,19 @@ public class LibraryMember extends Person implements Serializable {
 	private String memberID;
 	private String password;
 
-	private LibraryMemberAuthorization authorization;
-	private List<CheckoutEntry> checkoutRecord;
+	
+	private CheckoutRecord checkOutRecord=new CheckoutRecord();
+
+	public CheckoutRecord getCheckOutRecord() {
+		return checkOutRecord;
+	}
+
+	public void setCheckOutRecord(CheckoutRecord checkOutRecord) {
+		this.checkOutRecord = checkOutRecord;
+	}
 
 	public LibraryMember() {
+	setAuthorization(LibraryMemberAuthorization.LIBRARIAN);
 	}
 
 	public LibraryMember(String firstName, String lastName, String phoneNumber, Address address) {
@@ -21,7 +30,7 @@ public class LibraryMember extends Person implements Serializable {
 		super(firstName, lastName, phoneNumber, address);
 		this.memberID = memberID;
 		this.password = password;
-		this.authorization = authorization;
+		setAuthorization(authorization);
 	}
 
 	public String getMemberID() {
@@ -40,21 +49,6 @@ public class LibraryMember extends Person implements Serializable {
 		this.password = password;
 	}
 
-	public LibraryMemberAuthorization getAuthorization() {
-		return authorization;
-	}
-
-	public void setAuthorization(LibraryMemberAuthorization authorization) {
-		this.authorization = authorization;
-	}
-
-	public List<CheckoutEntry> getCheckoutRecord() {
-		return checkoutRecord;
-	}
-
-	public void setCheckoutRecord(List<CheckoutEntry> checkoutRecord) {
-		this.checkoutRecord = checkoutRecord;
-	}
 
 	@Override
 	public String getFirstName() {
@@ -105,8 +99,8 @@ public class LibraryMember extends Person implements Serializable {
 				", address=" + getAddress() + '\'' +
 				"memberID='" + memberID + '\'' +
 				", password='" + password + '\'' +
-				", authorization=" + authorization +
-				", checkoutRecord=" + checkoutRecord +
+				", authorization=" + getAuthorization() +
+				", checkoutRecord=" + checkOutRecord.toString() +
 				'}';
 	}
 }
