@@ -9,24 +9,10 @@ public class Person implements Serializable {
     private String phoneNumber;
     private Address address;
 
-    
-    
     public Person() {
 
     }
 
-	private LibraryMemberAuthorization authorization=LibraryMemberAuthorization.LIBRARIAN;
-
-	
-	public LibraryMemberAuthorization getAuthorization() {
-		return authorization;
-	}
-
-	public void setAuthorization(LibraryMemberAuthorization authorization) {
-		this.authorization = authorization;
-	}
-
-    
     public Person(String firstName, String lastName, String phoneNumber, Address address) {
         this.firstName = firstName;
         this.lastName = lastName;

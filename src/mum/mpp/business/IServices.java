@@ -7,10 +7,10 @@ import java.util.ArrayList;
 
 import mum.mpp.model.*;
 
-public interface IPersonServices {
+public interface IServices {
 
 	
-public PersonActionResult login(Person person);
+public  Authorizable login(String username,String password);
 
 public PersonActionResult checkOutBook(Person person); 
 
