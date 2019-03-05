@@ -5,6 +5,7 @@ import java.util.List;
 
 public class LibraryMember extends Person implements Serializable {
 	private String memberID;
+	private String password;
 
 	private LibraryMemberAuthorization authorization;
 	private List<CheckoutEntry> checkoutRecord;
@@ -30,16 +31,6 @@ public class LibraryMember extends Person implements Serializable {
 	public void setMemberID(String memberID) {
 		this.memberID = memberID;
 	}
-<<<<<<< .mine
-
-
-
-
-
-
-
-
-=======
 
 	public String getPassword() {
 		return password;
@@ -48,7 +39,6 @@ public class LibraryMember extends Person implements Serializable {
 	public void setPassword(String password) {
 		this.password = password;
 	}
->>>>>>> .theirs
 
 	public LibraryMemberAuthorization getAuthorization() {
 		return authorization;

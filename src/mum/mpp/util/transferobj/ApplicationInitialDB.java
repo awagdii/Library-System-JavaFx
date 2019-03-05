@@ -44,7 +44,7 @@ public class ApplicationInitialDB {
         //Add Administrator One
         Administrator admin = new Administrator();
         admin.setFirstName("Anglo");
-        admin.setLastname("Andro");
+        admin.setLastName("Andro");
         admin.setPhoneNumber("+1(641)-76630932");
         Address address = new Address();
         address.setCity("Iowa");
@@ -58,7 +58,7 @@ public class ApplicationInitialDB {
         //Add Administrator One
         Administrator admin1 = new Administrator();
         admin.setFirstName("Kefin");
-        admin.setLastname("Mark");
+        admin.setLastName("Mark");
         admin.setPhoneNumber("+1(641)-76600932");
         Address address1 = new Address();
         address1.setCity("Newyork");
@@ -90,7 +90,7 @@ public class ApplicationInitialDB {
         author.setBio("12 book");
         author.setCredentials("Iam Credentials");
         author.setFirstName("author first name");
-        author.setLastname("author last name");
+        author.setLastName("author last name");
         author.setPhoneNumber("+1(641)-67212111");
         ArrayList<Author> authors = new ArrayList<>();
         authors.add(author);
@@ -119,7 +119,7 @@ public class ApplicationInitialDB {
         author2.setBio("19 book");
         author2.setCredentials("Iam Credentials");
         author2.setFirstName("author first name");
-        author2.setLastname("author last name");
+        author2.setLastName("author last name");
         author2.setPhoneNumber("+1(641)-67212111");
         ArrayList<Author> authors2 = new ArrayList<>();
         authors2.add(author2);
@@ -148,7 +148,7 @@ public class ApplicationInitialDB {
         author3.setBio("1 book");
         author3.setCredentials("Iam Credentials");
         author3.setFirstName("author first name");
-        author3.setLastname("author last name");
+        author3.setLastName("author last name");
         author3.setPhoneNumber("+1(641)-67212111");
         ArrayList<Author> authors3 = new ArrayList<>();
         authors3.add(author3);
@@ -157,7 +157,7 @@ public class ApplicationInitialDB {
 
         LibraryMember libM1 = new LibraryMember();
         libM1.setFirstName("Kai");
-        libM1.setLastname("Wang");
+        libM1.setLastName("Wang");
         libM1.setMemberID("213");
         libM1.setPassword("123");
         libM1.setPhoneNumber("+1(641)-9712212");
@@ -194,7 +194,7 @@ public class ApplicationInitialDB {
 
         LibraryMember libM2 = new LibraryMember();
         libM2.setFirstName("Wagdi");
-        libM2.setLastname("Zakzo2");
+        libM2.setLastName("Zakzo2");
         libM2.setMemberID("443");
         libM2.setPassword("123");
         libM2.setPhoneNumber("+1(641)-9712212");
@@ -204,7 +204,7 @@ public class ApplicationInitialDB {
 
         LibraryMember libM3 = new LibraryMember();
         libM3.setFirstName("Hesham");
-        libM3.setLastname("Mahmoud");
+        libM3.setLastName("Mahmoud");
         libM3.setMemberID("213");
         libM3.setPassword("123");
         libM3.setPhoneNumber("+1(641)-9712212");

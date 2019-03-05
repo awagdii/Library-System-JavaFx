@@ -20,16 +20,9 @@ public class PersonServicesImp implements IPersonServices {
 	}
 
 	@Override
-	public PersonActionResult Login(Person person) {
-		PersonActionResult par=new PersonActionResult();
-		ArrayList<Person> ps=personDAO.loadPersons();
-		for(Person p:ps){
-			if(p.getUserName().equals(person.getUserName()) && p.getPassword().equals(person.getPassword())){
-				par.setResult(true);
-				par.setPerson(person);
-			}
-		}
-		return par;
+	public PersonActionResult login(Person person) {
+
+		return null;
 	}
 
 	@Override

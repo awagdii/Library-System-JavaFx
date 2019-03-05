@@ -10,7 +10,7 @@ import mum.mpp.model.*;
 public interface IPersonServices {
 
 	
-public PersonActionResult Login(Person person);
+public PersonActionResult login(Person person);
 
 public PersonActionResult checkOutBook(Person person); 
 

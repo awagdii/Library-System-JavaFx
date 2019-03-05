@@ -3,135 +3,63 @@ package mum.mpp.model;
 import java.io.Serializable;
 
 public class Person implements Serializable {
-	
-	private String firstName;
-	private String lastName;
-	private String phoneNumber;
-	private Address address;
 
-<<<<<<< .mine
-	public String getUserName() {
-		return userName;
-	}
+    private String firstName;
+    private String lastName;
+    private String phoneNumber;
+    private Address address;
 
-	public void setUserName(String userName) {
-		this.userName = userName;
-	}
+    public Person() {
 
-	public String getPassword() {
-		return password;
-	}
+    }
 
-	public void setPassword(String password) {
-		this.password = password;
-	}
+    public Person(String firstName, String lastName, String phoneNumber, Address address) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.phoneNumber = phoneNumber;
+        this.address = address;
+    }
 
-	public enum MemberAuthorization{
-		ADMIN,
-		LIBRARIAN,
-		BOTH
-   }
- 
-=======
-	public Person() {
-	}
+    public String getFirstName() {
+        return firstName;
+    }
 
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
 
+    public String getLastName() {
+        return lastName;
+    }
 
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
 
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
 
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
 
+    public Address getAddress() {
+        return address;
+    }
 
+    public void setAddress(Address address) {
+        this.address = address;
+    }
 
+    @Override
+    public String toString() {
+        return "Person{" +
+                "firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", phoneNumber='" + phoneNumber + '\'' +
+                ", address=" + address +
+                '}';
+    }
 
-
-
-
-
-
-
-
-
-
-
-
->>>>>>> .theirs
-
-	public Person(String firstName, String lastName, String phoneNumber, Address address) {
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.phoneNumber = phoneNumber;
-		this.address = address;
-	}
-
-	public String getFirstName() {
-		return firstName;
-	}
-
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
-	}
-
-	public String getLastName() {
-		return lastName;
-	}
-
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
-	}
-
-	public String getPhoneNumber() {
-		return phoneNumber;
-	}
-
-	public void setPhoneNumber(String phoneNumber) {
-		this.phoneNumber = phoneNumber;
-	}
-
-	public Address getAddress() {
-		return address;
-	}
-
-	public void setAddress(Address address) {
-		this.address = address;
-	}
-
-	@Override
-	public String toString() {
-		return "Person{" +
-				"firstName='" + firstName + '\'' +
-				", lastName='" + lastName + '\'' +
-				", phoneNumber='" + phoneNumber + '\'' +
-				", address=" + address +
-				'}';
-	}
-<<<<<<< .mine
-	void setAuthorizationLevel(MemberAuthorization authorizationLevel) {
-		this.authorizationLevel = authorizationLevel;
-	}
-
-
-	private String userName;
-    private String password;
-	private String firstName;
-	private String lastname;
-	private String phoneNumber;
-	private Address address;
-	private MemberAuthorization authorizationLevel;
-	
-=======
-
-
-
-
-
-
-
-
-
-
-
-
-
->>>>>>> .theirs
 }

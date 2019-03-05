@@ -5,10 +5,20 @@
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="mum.mpp.controller.Login"
-            prefHeight="400.0" prefWidth="600.0">
-
+<AnchorPane prefHeight="531.0" prefWidth="825.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="mum.mpp.controller.Login">
+  <children>
+    <Label layoutX="187.0" layoutY="214.0" text="Member ID" />
+    <Label layoutX="198.0" layoutY="306.0" text="Password" />
+    <Label layoutX="303.0" layoutY="79.0" text="Library Login">
+      <font>
+        <Font name="System Bold" size="33.0" />
+      </font>
+    </Label>
+    <TextField fx:id="idField" layoutX="371.0" layoutY="206.0" />
+    <PasswordField fx:id="passwdField" layoutX="371.0" layoutY="298.0" />
+    <Button layoutX="508.0" layoutY="396.0" mnemonicParsing="false" onAction="#clickLoginAction" prefHeight="48.0" prefWidth="167.0" text="Login" />
+    <Label fx:id="errorLabel" layoutX="78.0" layoutY="147.0" prefHeight="32.0" prefWidth="669.0" textAlignment="CENTER" textFill="RED" />
+  </children>
 </AnchorPane>
