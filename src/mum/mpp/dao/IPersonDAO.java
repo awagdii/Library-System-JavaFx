@@ -10,11 +10,11 @@ public interface IPersonDAO {
 	
 public ArrayList<Person> loadPersons();
 
-public ArrayList<Book> LoadLiberaryBooks();
+public ArrayList<Book> loadLibraryBooks();
 
-public ArrayList<BookCopy> LoadBookCopies();
+public ArrayList<BookCopy> loadBookCopies();
 
-public CheckoutRecord LoadCheckOutRecord();
+public CheckoutRecord loadCheckOutRecord();
 
 
 }

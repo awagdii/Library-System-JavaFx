@@ -4,7 +4,23 @@ import java.io.Serializable;
 
 public class Person implements Serializable {
 
-   public enum MemberAuthorization{
+	public String getUserName() {
+		return userName;
+	}
+
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public enum MemberAuthorization{
 		ADMIN,
 		LIBRARIAN,
 		BOTH
@@ -42,7 +58,9 @@ public class Person implements Serializable {
 		this.authorizationLevel = authorizationLevel;
 	}
 
-	
+
+	private String userName;
+    private String password;
 	private String firstName;
 	private String lastname;
 	private String phoneNumber;

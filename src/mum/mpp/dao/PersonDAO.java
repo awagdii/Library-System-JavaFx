@@ -1,57 +1,47 @@
 package mum.mpp.dao;
 
-import java.util.ArrayList;
-
-import mum.mpp.model.Book;
-import mum.mpp.model.BookCopy;
-import mum.mpp.model.CheckoutRecord;
-import mum.mpp.model.Person;
+import mum.mpp.model.*;
 import mum.mpp.util.transferobj.ApplicationInitialDB;
+
+import java.util.ArrayList;
 
 public class PersonDAO implements IPersonDAO {
 
-	private ApplicationInitialDB appInitalDB;
-	public PersonDAO() {
-		//You can Use this Object for read any data you want
-		appInitalDB=ApplicationInitialDB.loadIntialDB();	
-	}
-	
-	@Override
-	public ArrayList<Person> loadPersons() {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
-	public ApplicationInitialDB getAppInitalDB() {
-		return appInitalDB;
-	}
+    public PersonDAO() {
+        //You can Use this Object for read any data you want
+    }
 
-	public void setAppInitalDB(ApplicationInitialDB appInitalDB) {
-		this.appInitalDB = appInitalDB;
-	}
+    @Override
+    public ArrayList<Person> loadPersons() {
+        // TODO Auto-generated method stub
+        ArrayList<Person> ps = new ArrayList<>();
 
-	@Override
-	public ArrayList<Book> LoadLiberaryBooks() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+        for (Administrator a : ApplicationInitialDB.administrators) {
+            ps.add(a);
+        }
+        for (LibraryMember l : ApplicationInitialDB.librarians) {
+            ps.add(l);
+        }
 
-	@Override
-	public ArrayList<BookCopy> LoadBookCopies() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+        return ps;
+    }
 
-	@Override
-	public CheckoutRecord LoadCheckOutRecord() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+    @Override
+    public ArrayList<Book> loadLibraryBooks() {
+        // TODO Auto-generated method stub
+        return null;
+    }
 
-	
-	public static void main(String[] args) {
-		PersonDAO p=new PersonDAO();
-		//System.out.println((p.getAppInitalDB().getBooks().size()));
-	}
-	
+    @Override
+    public ArrayList<BookCopy> loadBookCopies() {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    @Override
+    public CheckoutRecord loadCheckOutRecord() {
+        // TODO Auto-generated method stub
+        return null;
+    }
 }

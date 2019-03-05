@@ -14,13 +14,13 @@ public PersonActionResult Login(Person person);
 
 public PersonActionResult checkOutBook(Person person); 
 
-public PersonActionResult AddLibraryMember(LibraryMember libraryMember);
+public PersonActionResult addLibraryMember(LibraryMember libraryMember);
 
-public PersonActionResult UpdateLibraryMember(LibraryMember libraryMember,LibraryMember oldLibraryMember);
+public PersonActionResult updateLibraryMember(LibraryMember libraryMember, LibraryMember oldLibraryMember);
 
-public PersonActionResult AddBook(Book book);
+public PersonActionResult addBook(Book book);
 
-public PersonActionResult AddBookCopies(Book book,ArrayList<BookCopy> bookCopies);
+public PersonActionResult addBookCopies(Book book, ArrayList<BookCopy> bookCopies);
 
 public PersonActionResult signOut(Person person);
 }
