@@ -11,7 +11,6 @@ public class ServicesImp implements IServices {
 
     @Override
     public Authorizable login(String username, String password) {
-        System.out.println(ApplicationInitialDB.librarians);
         for (SuperAdministrator superAdministrator : ApplicationInitialDB.superAdministrators) {
             if (superAdministrator.getUsername() != null && superAdministrator.getUsername().equals(username)) {
                 return superAdministrator;
