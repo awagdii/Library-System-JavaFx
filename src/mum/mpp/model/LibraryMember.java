@@ -3,12 +3,11 @@ package mum.mpp.model;
 import java.io.Serializable;
 import java.util.List;
 
-
 public class LibraryMember extends Person implements Serializable {
 	private String memberID;
 	private String password;
 	private LibraryMemberAuthorization authorization;
-	private List<CheckoutEntity> checkoutRecord;
+	private List<CheckoutEntry> checkoutRecord;
 
 	public LibraryMember() {
 	}
@@ -48,11 +47,11 @@ public class LibraryMember extends Person implements Serializable {
 		this.authorization = authorization;
 	}
 
-	public List<CheckoutEntity> getCheckoutRecord() {
+	public List<CheckoutEntry> getCheckoutRecord() {
 		return checkoutRecord;
 	}
 
-	public void setCheckoutRecord(List<CheckoutEntity> checkoutRecord) {
+	public void setCheckoutRecord(List<CheckoutEntry> checkoutRecord) {
 		this.checkoutRecord = checkoutRecord;
 	}
 
