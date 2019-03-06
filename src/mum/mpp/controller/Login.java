@@ -60,7 +60,7 @@ public class Login extends Application {
                     stage.setScene(new Scene(fxmlLoader.load()));
                     stage.show();
                 } else if (result.getAuthorization() == LibraryMemberAuthorization.ADMIN) {
-                    FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/mum/mpp/view/admin.fxml"));
+                    FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/mum/mpp/view/AdminControlPanel.fxml"));
                     Stage stage = new Stage();
                     stage.setTitle("Admin Page");
                     stage.setScene(new Scene(fxmlLoader.load()));
