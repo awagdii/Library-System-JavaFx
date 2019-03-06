@@ -166,10 +166,10 @@ public class ApplicationInitialDB {
 
         CheckoutRecord record1 = new CheckoutRecord(LocalDate.of(2019, Month.FEBRUARY, 1),LocalDate.of(2019, Month.FEBRUARY, 22),book1,libM1);
         record1.getCheckOutEntries().add(new CheckoutEntry (LocalDate.of(2019, 3, 1),
-                                                            LocalDate.of(2019, 3, 8),book2,record1));
+                                                            LocalDate.of(2019, 3, 8),bookcopy1,record1));
 
         record1.getCheckOutEntries().add(new CheckoutEntry (LocalDate.of(2019, 3, 8),
-                LocalDate.of(2019, 3, 15),book2,record1));
+                LocalDate.of(2019, 3, 15),bookcopy2,record1));
 
         libM1.setCheckOutRecord(record1);
 

@@ -7,12 +7,12 @@ public class CheckoutEntry implements Serializable {
 	
 	private LocalDate checkoutDate;
 	private LocalDate dueDate;
-	private Book book;
+	private BookCopy bookCopy;
 	private CheckoutRecord checkoutRecord;
 
 
-	CheckoutEntry(LocalDate checkOutDate,LocalDate dueDate,Book book,CheckoutRecord checkOutRecod){
-		this.book=book;
+	CheckoutEntry(LocalDate checkOutDate,LocalDate dueDate,BookCopy bookCopy,CheckoutRecord checkOutRecod){
+		this.bookCopy=bookCopy;
 		this.checkoutRecord=checkOutRecod;
 		this.dueDate=dueDate;
 		this.setCheckoutRecord(checkOutRecod);
@@ -29,11 +29,11 @@ public class CheckoutEntry implements Serializable {
 	public void setDueDate(LocalDate dueDate) {
 		this.dueDate = dueDate;
 	}
-	public Book getBook() {
-		return book;
+	public BookCopy getBookCopy() {
+		return bookCopy;
 	}
-	public void setBook(Book bookCopy) {
-		this.book = book;
+	public void setBookCopy(BookCopy bookCopy) {
+		this.bookCopy = bookCopy;
 	}
 
 	public CheckoutRecord getCheckoutRecord() {

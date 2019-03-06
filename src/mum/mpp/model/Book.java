@@ -10,7 +10,7 @@ public class Book implements Serializable {
 
 
 	public Book(String copyId,String title,String isbn,int avaiableCount,int borrowModel,ArrayList<Author> authors){ this.authorList=authors;
-       this.avaiableCount=avaiableCount;
+       this.isAvaiable=true;
        this.borrowModel =borrowModel;
        this.isbn=isbn;
        this.title=title;
@@ -20,7 +20,7 @@ public class Book implements Serializable {
 	private String title;
 	private String isbn;
 
-	private int avaiableCount=1;
+	private boolean isAvaiable;
 
 	private int borrowModel=21;  //this may be 7 or 21 DAYS
 
@@ -60,13 +60,7 @@ public class Book implements Serializable {
 	}
 
 
-	public int getAvaiableCount() {
-		return avaiableCount;
-	}
 
-	public void setAvaiableCount(int avaiableCount) {
-		this.avaiableCount = avaiableCount;
-	}
 
 	public int getBorrowModel() {
 		return borrowModel;
@@ -74,5 +68,13 @@ public class Book implements Serializable {
 
 	public void setBorrowModel(int borrowModel) {
 		this.borrowModel = borrowModel;
+	}
+
+	public boolean isAvaiable() {
+		return isAvaiable;
+	}
+
+	public void setAvaiable(boolean avaiable) {
+		isAvaiable = avaiable;
 	}
 }
