@@ -1,5 +1,8 @@
 package mum.mpp.controller;
 
+import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXPasswordField;
+import com.jfoenix.controls.JFXTextField;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -19,11 +22,11 @@ import java.io.IOException;
 public class Login extends Application {
 
     @FXML
-    private TextField username;
+    private JFXTextField username;
     @FXML
-    private PasswordField password;
+    private JFXPasswordField password;
     @FXML
-    private Button loginButton;
+    private JFXButton loginButton;
     @FXML
     private Label errorLabel;
 
@@ -34,7 +37,7 @@ public class Login extends Application {
         Parent root = FXMLLoader.load(getClass().getResource("/mum/mpp/view/login.fxml"));
         Scene scene = new Scene(root, 750, 500);
         primaryStage.setTitle("Library System");
-        scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+        scene.getStylesheets().add(getClass().getResource("/application/application.css").toExternalForm());
         primaryStage.setScene(scene);
         primaryStage.show();
     }
