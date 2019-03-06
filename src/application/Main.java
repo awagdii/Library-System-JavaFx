@@ -5,7 +5,7 @@ import javafx.application.Application;
 import javafx.stage.Stage;
 import mum.mpp.controller.Login;
 import mum.mpp.util.SplashScreenLoader;
-import mum.mpp.util.transferobj.ApplicationInitialDB;
+import mum.mpp.model.ApplicationInitialDB;
 
 
 public class Main extends Application {

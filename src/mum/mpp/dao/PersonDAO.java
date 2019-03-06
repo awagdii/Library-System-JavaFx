@@ -1,7 +1,7 @@
 package mum.mpp.dao;
 
 import mum.mpp.model.*;
-import mum.mpp.util.transferobj.ApplicationInitialDB;
+import mum.mpp.model.ApplicationInitialDB;
 
 import java.util.ArrayList;
 

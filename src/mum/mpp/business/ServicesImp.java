@@ -1,11 +1,10 @@
 package mum.mpp.business;
 
 import mum.mpp.model.*;
-import mum.mpp.util.transferobj.ApplicationInitialDB;
+import mum.mpp.model.ApplicationInitialDB;
 import mum.mpp.util.transferobj.PersonActionResult;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class ServicesImp implements IServices {
 

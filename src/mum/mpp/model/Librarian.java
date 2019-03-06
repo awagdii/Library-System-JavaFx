@@ -2,12 +2,12 @@ package mum.mpp.model;
 
 import java.io.Serializable;
 
-public class SuperAdministrator  implements Serializable, Authorizable {
+public class Librarian implements  Authorizable, Serializable {
 
     private String username;
     private String password;
 
-    public SuperAdministrator() {
+    public Librarian() {
     }
 
     @Override
@@ -32,6 +32,7 @@ public class SuperAdministrator  implements Serializable, Authorizable {
 
     @Override
     public LibraryMemberAuthorization getAuthorization() {
-        return LibraryMemberAuthorization.BOTH;
+        return LibraryMemberAuthorization.LIBRARIAN;
     }
+
 }
