@@ -22,9 +22,9 @@
             <fx:include source="/mum/mpp/view/addCopy.fxml"/>
           </content>
         </Tab>
-        <Tab text="Add Librarian">
+        <Tab text="Add Library Member">
           <content>
-            <fx:include source="/mum/mpp/view/addLibrarian.fxml"/>
+            <fx:include source="/mum/mpp/view/libraryMember.fxml"/>
           </content>
         </Tab>
       </tabs>
