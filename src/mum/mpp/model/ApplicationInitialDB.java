@@ -15,7 +15,7 @@ public class ApplicationInitialDB {
     private ApplicationInitialDB() {
         // TODO Auto-generated constructor stub
     }
-
+    public static List<Librarian> librarianList = new ArrayList<>();
     public static List<LibraryMember> librarians = new ArrayList<>();
     public static List<SuperAdministrator> superAdministrators = new ArrayList<>();
     public static List<Book> books = new ArrayList<>();
@@ -192,5 +192,13 @@ public class ApplicationInitialDB {
 
         Collections.addAll(libMems, libM1, libM2, libM3);
         LibraryUtil.writeSerializedObject(libMems, IConstants.SERIALIZATION_LIB_MEMBER_FILENAME);
+
+        Librarian l1=new Librarian();
+        l1.setPassword("librarian");
+        l1.setUsername("librarian");
+
+        librarianList.add(l1);
+        LibraryUtil.writeSerializedObject(librarianList, IConstants.SERIALIZATION_LIBRIRIAN_FILENAME);
+
     }
 }
