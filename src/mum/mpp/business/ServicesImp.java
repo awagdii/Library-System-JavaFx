@@ -5,6 +5,7 @@ import mum.mpp.util.transferobj.ApplicationInitialDB;
 import mum.mpp.util.transferobj.PersonActionResult;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class ServicesImp implements IServices {
 
@@ -36,8 +37,20 @@ public class ServicesImp implements IServices {
     }
 
     @Override
-    public PersonActionResult addLibraryMember(LibraryMember libraryMember) {
-        return null;
+    public PersonActionResult addLibraryMember(Person person, LibraryMemberAuthorization role ) {
+        switch (role) {
+            case LIBRARIAN:
+                ApplicationInitialDB.librarians.add((LibraryMember)person);
+            case ADMIN:
+                ApplicationInitialDB.administrators.add((Administrator)person);
+            case BOTH:
+                ApplicationInitialDB.superAdministrators.add((SuperAdministrator)person);
+        }
+        PersonActionResult result = new PersonActionResult();
+        result.setPerson(person);
+        result.setResult(true);
+        result.setActionMessage("Add member success");
+        return result;
     }
 
     @Override
