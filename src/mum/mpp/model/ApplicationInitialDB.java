@@ -15,8 +15,8 @@ public class ApplicationInitialDB {
     private ApplicationInitialDB() {
         // TODO Auto-generated constructor stub
     }
-    public static List<Librarian> librarianList = new ArrayList<>();
-    public static List<LibraryMember> librarians = new ArrayList<>();
+    public static List<Librarian> librarians = new ArrayList<>();
+    public static List<LibraryMember> libraryMembers = new ArrayList<>();
     public static List<SuperAdministrator> superAdministrators = new ArrayList<>();
     public static List<Book> books = new ArrayList<>();
     public static List<Administrator> administrators = new ArrayList<>();
@@ -29,7 +29,7 @@ public class ApplicationInitialDB {
             if (tempF.getName().equals(IConstants.SERIALIZATION_BOOK_FILENAME)) {
                 books = LibraryUtil.readSerializedObject(tempF.getName());
             } else if (tempF.getName().equals(IConstants.SERIALIZATION_LIB_MEMBER_FILENAME)) {
-                librarians = LibraryUtil.readSerializedObject(tempF.getName());
+                libraryMembers = LibraryUtil.readSerializedObject(tempF.getName());
             } else if ((tempF.getName().equals(IConstants.SERIALIZATION_SUPER_ADMIN_FILENAME))) {
                 superAdministrators = LibraryUtil.readSerializedObject(tempF.getName());
             } else if ((tempF.getName().equals(IConstants.SERIALIZATION_ADMIN_FILENAME))) {
@@ -164,7 +164,7 @@ public class ApplicationInitialDB {
         libM1.setAddress(address1);
 
 
-        CheckoutRecord record1 = new CheckoutRecord(LocalDate.of(2019, Month.FEBRUARY, 1),LocalDate.of(2019, Month.FEBRUARY, 22),book1,libM1);
+        CheckoutRecord record1 = new CheckoutRecord(LocalDate.of(2019, Month.FEBRUARY, 1),LocalDate.of(2019, Month.FEBRUARY, 22),bookcopy1,libM1);
         record1.getCheckOutEntries().add(new CheckoutEntry (LocalDate.of(2019, 3, 1),
                                                             LocalDate.of(2019, 3, 8),bookcopy1,record1));
 
@@ -197,8 +197,8 @@ public class ApplicationInitialDB {
         l1.setPassword("librarian");
         l1.setUsername("librarian");
 
-        librarianList.add(l1);
-        LibraryUtil.writeSerializedObject(librarianList, IConstants.SERIALIZATION_LIBRIRIAN_FILENAME);
+        librarians.add(l1);
+        LibraryUtil.writeSerializedObject(librarians, IConstants.SERIALIZATION_LIBRIRIAN_FILENAME);
 
     }
 }

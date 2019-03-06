@@ -21,9 +21,9 @@ public class ServicesImp implements IServices {
                 return administrator;
             }
         }
-        for (LibraryMember libraryMember : ApplicationInitialDB.librarians) {
-            if (libraryMember.getUsername() != null && libraryMember.getUsername().equals(username)) {
-                return libraryMember;
+        for (Librarian librarian : ApplicationInitialDB.librarians) {
+            if (librarian.getUsername() != null && librarian.getUsername().equals(username)) {
+                return librarian;
             }
         }
 
@@ -39,7 +39,7 @@ public class ServicesImp implements IServices {
     public PersonActionResult addLibraryMember(Person person, LibraryMemberAuthorization role ) {
         switch (role) {
             case LIBRARIAN:
-                ApplicationInitialDB.librarians.add((LibraryMember)person);
+                ApplicationInitialDB.libraryMembers.add((LibraryMember)person);
             case ADMIN:
                 ApplicationInitialDB.administrators.add((Administrator)person);
             case BOTH:

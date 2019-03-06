@@ -2,7 +2,7 @@ package mum.mpp.model;
 
 import java.io.Serializable;
 
-public class SuperAdministrator  implements Serializable, Authorizable {
+public class SuperAdministrator extends Person implements Serializable, Authorizable {
 
     private String username;
     private String password;

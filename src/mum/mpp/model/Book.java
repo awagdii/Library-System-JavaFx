@@ -24,8 +24,8 @@ public class Book implements Serializable {
 
 	private int borrowModel=21;  //this may be 7 or 21 DAYS
 
-	private List<Author> authorList;
-	private List<BookCopy> copyList;
+	private List<Author> authorList = new ArrayList<>();
+	private List<BookCopy> copyList = new ArrayList<>();
 
 	public String getTitle() {
 		return title;

@@ -1,19 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Text?>
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="mum.mpp.controller.CheckOutBook"
-            prefHeight="400.0" prefWidth="600.0">
 
-    <children>
-        <Text layoutX="42.0" layoutY="73.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Check Out Book" />
-    </children>
+<AnchorPane prefHeight="498.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mum.mpp.controller.CheckOutBook">
+   <children>
+      <JFXTextField layoutX="256.0" layoutY="104.0" prefHeight="31.0" prefWidth="222.0" />
+      <JFXTextField layoutX="256.0" layoutY="178.0" prefHeight="31.0" prefWidth="222.0" />
+      <Text layoutX="146.0" layoutY="140.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Member ID" />
+      <Text layoutX="146.0" layoutY="214.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Book ISBN" />
+      <JFXButton layoutX="389.0" layoutY="284.0" text="Check Out" />
+   </children>
 
 </AnchorPane>
