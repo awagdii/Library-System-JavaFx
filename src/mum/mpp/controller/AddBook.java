@@ -68,7 +68,7 @@ public class AddBook implements Initializable {
         Book book=null;
         IndexedCheckModel<String> selectedAuthors=null;
 
-        for(int i=0;i<=noOfCopies;i++) {
+        for(int i=1;i<noOfCopies;i++) {
             if (i == 0) {
                 book = new Book(Integer.toString(i), getTitle().getText(), getIsbn().getText(), Integer.parseInt(getCheckOutDays().getValue()), null);
             }

@@ -28,6 +28,11 @@
                      <fx:include source="/mum/mpp/view/libraryMember.fxml"/>
                  </content>
              </Tab>
+             <Tab text="Display Library Member Info">
+                 <content>
+                     <fx:include source="/mum/mpp/view/displaylibraryMember.fxml"/>
+                 </content>
+             </Tab>
          </tabs>
       </JFXTabPane>
    </children>
