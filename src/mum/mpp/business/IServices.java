@@ -14,7 +14,7 @@ public  Authorizable login(String username,String password);
 
 public PersonActionResult checkOutBook(Person person); 
 
-public PersonActionResult addLibraryMember(Person person, LibraryMemberAuthorization role);
+public PersonActionResult addLibraryMember(LibraryMember libraryMember);
 
 public PersonActionResult updateLibraryMember(LibraryMember libraryMember, LibraryMember oldLibraryMember);
 
