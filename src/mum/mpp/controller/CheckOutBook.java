@@ -43,11 +43,12 @@ public class CheckOutBook {
         } else {
             BookCopy bookCopy = selectedBook.getAvailableCopy();
             if (bookCopy != null) {
-
-
                 LocalDate now = LocalDate.now();
                 LocalDate dueDate = now.plusDays(selectedBook.getBorrowModel());
                 selectedLibraryMember.getCheckOutRecord().addCheckOutEntry(now,dueDate,bookCopy);
+                bookCopy.setAvailable(false);
+                ApplicationInitialDB.saveAllLibraryMembers();
+                ApplicationInitialDB.saveAllBooks();
                 LibraryUtil.createNewAlert("Checked Out Successfully",
                         "Book Copy id :" + bookCopy.getCopyId() + "\n checked out to  " + selectedLibraryMember.getFirstName() + "  " + selectedLibraryMember.getLastName());
 

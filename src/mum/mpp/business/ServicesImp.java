@@ -1,13 +1,19 @@
 package mum.mpp.business;
 
+import javafx.scene.control.Alert;
+import mum.mpp.dao.IPersonDAO;
+import mum.mpp.dao.PersonDAO;
 import mum.mpp.model.*;
 import mum.mpp.model.ApplicationInitialDB;
+import mum.mpp.util.IConstants;
 import mum.mpp.util.transferobj.PersonActionResult;
 
 import java.util.ArrayList;
 
 public class ServicesImp implements IServices {
 
+
+    IPersonDAO personDAO=new PersonDAO();
 
     @Override
     public Authorizable login(String username, String password) {
@@ -36,19 +42,14 @@ public class ServicesImp implements IServices {
     }
 
     @Override
-    public PersonActionResult addLibraryMember(Person person, LibraryMemberAuthorization role ) {
-        switch (role) {
-            case LIBRARIAN:
-                ApplicationInitialDB.libraryMembers.add((LibraryMember)person);
-            case ADMIN:
-                ApplicationInitialDB.administrators.add((Administrator)person);
-            case BOTH:
-                ApplicationInitialDB.superAdministrators.add((SuperAdministrator)person);
-        }
+    public PersonActionResult addLibraryMember(LibraryMember libraryMember) {
+        //TODO Validation
+        ApplicationInitialDB.libraryMembers.add(libraryMember);
+        ((PersonDAO)personDAO).serliazeList(ApplicationInitialDB.libraryMembers, IConstants.SERIALIZATION_LIB_MEMBER_FILENAME);
         PersonActionResult result = new PersonActionResult();
-        result.setPerson(person);
         result.setResult(true);
-        result.setActionMessage("Add member success");
+        result.setActionMessage("Add Library Member Success");
+
         return result;
     }
 

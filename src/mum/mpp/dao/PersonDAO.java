@@ -2,10 +2,13 @@ package mum.mpp.dao;
 
 import mum.mpp.model.*;
 import mum.mpp.model.ApplicationInitialDB;
+import mum.mpp.util.LibraryUtil;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class PersonDAO implements IPersonDAO {
+
 
 
     public PersonDAO() {
@@ -34,4 +37,9 @@ public class PersonDAO implements IPersonDAO {
         // TODO Auto-generated method stub
         return null;
     }
+
+    public <T> void serliazeList(List<T> objs, String listName){
+        LibraryUtil.writeSerializedObject(objs,listName);
+    }
+
 }

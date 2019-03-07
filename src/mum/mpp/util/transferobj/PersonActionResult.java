@@ -6,15 +6,9 @@ public class PersonActionResult {
 
 	private boolean result;
 	private String  actionMessage;
-	private Person person;
+
 	
 	
-	public Person getPerson() {
-		return person;
-	}
-	public void setPerson(Person person) {
-		this.person = person;
-	}
 	public boolean isResult() {
 			return result;
 	}

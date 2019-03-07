@@ -43,7 +43,9 @@ public class BookCopy implements Serializable {
     @Override
     public String toString() {
         return "BookCopy{" +
-                "copyId='" + copyId + '\'' + '}' + "\n";
+                "copyId='" + copyId + '\'' +
+                ", isAvailable=" + isAvailable +
+                '}' + "\n";
     }
 }
 

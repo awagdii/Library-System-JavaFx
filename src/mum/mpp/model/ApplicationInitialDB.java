@@ -1,5 +1,6 @@
 package mum.mpp.model;
 
+import mum.mpp.controller.SuperAdmin;
 import mum.mpp.util.IConstants;
 import mum.mpp.util.LibraryUtil;
 
@@ -182,5 +183,17 @@ public class ApplicationInitialDB {
 
     public static void saveAllBooks() {
         LibraryUtil.writeSerializedObject(ApplicationInitialDB.books, IConstants.SERIALIZATION_BOOK_FILENAME);
+    }
+    public static void saveAllLibraryMembers() {
+        LibraryUtil.writeSerializedObject(ApplicationInitialDB.books, IConstants.SERIALIZATION_LIB_MEMBER_FILENAME);
+    }
+
+
+
+    public static void main(String[] args){
+          libraryMembers = LibraryUtil.readSerializedObject(IConstants.SERIALIZATION_LIB_MEMBER_FILENAME);
+          for(LibraryMember l:libraryMembers){
+              System.out.println(l.getMemberId() +" > " +l.getFirstName()+ "  > "+l.getLastName());
+          }
     }
 }

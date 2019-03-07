@@ -6,6 +6,11 @@ import com.jfoenix.controls.JFXTextField;
 import javafx.fxml.FXML;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
+import mum.mpp.business.IServices;
+import mum.mpp.business.ServicesImp;
+import mum.mpp.model.Address;
+import mum.mpp.util.transferobj.PersonActionResult;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -32,11 +37,36 @@ public class AddLibraryMember implements Initializable {
     @FXML
     private JFXButton saveButton;
 
+
+    IServices services = new ServicesImp();
+
     @FXML
     protected void clickSave(ActionEvent event) {
-        System.out.println("click save");
-        String roleValue = (String)comboBox.getValue();
-        System.out.println("role; " + roleValue);
+        mum.mpp.model.LibraryMember libraryMember = new mum.mpp.model.LibraryMember(idField.getText());
+        libraryMember.setFirstName(firstNameField.getText());
+        libraryMember.setLastName(lastNameField.getText());
+        libraryMember.setPhoneNumber(phoneField.getText());
+        Address address = new Address();
+        address.setCity(cityField.getText());
+        address.setState(stateField.getText());
+        address.setStreet(streetField.getText());
+        address.setZip(zipField.getText());
+        libraryMember.setAddress(address);
+        PersonActionResult par = services.addLibraryMember(libraryMember);
+        if (par.isResult()) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Library Member added successfully");
+            alert.setContentText(par.getActionMessage());
+            alert.show();
+        }
+        firstNameField.setText("");
+        lastNameField.setText("");
+        phoneField.setText("");
+        idField.setText("");
+        cityField.setText("");
+        stateField.setText("");
+        streetField.setText("");
+        zipField.setText("");
     }
 
     @Override
