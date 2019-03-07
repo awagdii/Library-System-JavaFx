@@ -68,11 +68,12 @@ public class AddBook implements Initializable {
         Book book=null;
         IndexedCheckModel<String> selectedAuthors=null;
 
-        for(int i=1;i<noOfCopies;i++) {
+        for(int i=0;i<noOfCopies;i++) {
             if (i == 0) {
                 book = new Book(Integer.toString(i), getTitle().getText(), getIsbn().getText(), Integer.parseInt(getCheckOutDays().getValue()), null);
+            }else{
+                book.addBookCopy(Integer.toString(i), book);
             }
-            book.addBookCopy(Integer.toString(i), book);
             selectedAuthors = authors.getCheckModel();
             if (selectedAuthors.getCheckedItems() != null && selectedAuthors.getCheckedItems().size() <= 0) {
                 LibraryUtil.createNewAlert("Validation Message", "Book should has at least one author");
