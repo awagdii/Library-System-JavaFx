@@ -7,7 +7,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="455.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mum.mpp.controller.AddLibraryMember">
+<AnchorPane style="-fx-background-image:  url(/mum/mpp/resources/img/backgroung.png)" prefHeight="455.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mum.mpp.controller.AddLibraryMember">
    <children>
       <Label layoutX="61.0" layoutY="86.0" text="Member ID" />
       <Label layoutX="62.0" layoutY="121.0" text="First Name" />

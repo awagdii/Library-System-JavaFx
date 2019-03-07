@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="588.0" prefWidth="1003.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mum.mpp.controller.CheckOutBook">
+<AnchorPane  style="-fx-background-image:  url(/mum/mpp/resources/img/backgroung.png)" prefHeight="588.0" prefWidth="1003.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mum.mpp.controller.CheckOutBook">
    <children>
       <JFXTextField fx:id="memberId" layoutX="244.0" layoutY="26.0" prefHeight="31.0" prefWidth="222.0" />
       <JFXTextField fx:id="bookIsdn" layoutX="244.0" layoutY="100.0" prefHeight="31.0" prefWidth="222.0" />
