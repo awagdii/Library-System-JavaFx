@@ -42,14 +42,15 @@ public class CheckoutRecord implements Serializable {
 		String string = "";
 		StringBuilder builder = new StringBuilder();
 		Formatter formatter = new Formatter(builder, Locale.US);
-		string += formatter.format("%-6s | %-10s | %-10s | %-10s | %-10s %n", "Member ID", "First Name", "Last Name", "Check Date", "Due Date").toString();
+		String head = formatter.format("%-6s | %-10s | %-10s | %-10s | %-10s | %-32s %n", "Member ID", "First Name", "Last Name", "Check Date", "Due Date", "Copy ID").toString();
 		String memID = libraryMember.getMemberId();
 		String firstName = libraryMember.getFirstName();
 		String lastName = libraryMember.getLastName();
 
 		for (CheckoutEntry entry: checkOutEntries) {
-			string += formatter.format("%-9s | %-10s | %-10s | %-10tD | %-10tD %n", memID, firstName, lastName, entry.getCheckoutDate(), entry.getDueDate());
+			formatter.format("%-9s | %-10s | %-10s | %-10tD | %-10tD | %-32s %n", memID, firstName, lastName, entry.getCheckoutDate(), entry.getDueDate(), entry.getBookCopy().getCopyId());
 		}
-		return string;
+		string = formatter.toString();
+		return head + string;
 	}
 }
