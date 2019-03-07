@@ -185,7 +185,7 @@ public class ApplicationInitialDB {
         LibraryUtil.writeSerializedObject(ApplicationInitialDB.books, IConstants.SERIALIZATION_BOOK_FILENAME);
     }
     public static void saveAllLibraryMembers() {
-        LibraryUtil.writeSerializedObject(ApplicationInitialDB.books, IConstants.SERIALIZATION_LIB_MEMBER_FILENAME);
+        LibraryUtil.writeSerializedObject(ApplicationInitialDB.libraryMembers, IConstants.SERIALIZATION_LIB_MEMBER_FILENAME);
     }
 
 
