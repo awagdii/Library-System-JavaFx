@@ -14,15 +14,15 @@
       <Text layoutX="134.0" layoutY="62.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Member ID" />
       <Text layoutX="134.0" layoutY="136.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Book ISBN" />
       <JFXButton layoutX="377.0" layoutY="170.0" onAction="#checkOutBook" text="Check Out" />
-      <TableView fx:id="tbData" layoutX="14.0" layoutY="257.0" prefHeight="231.0" prefWidth="968.0">
+      <TableView fx:id="tbData" layoutX="40.0" layoutY="258.0" prefHeight="231.0" prefWidth="796.0">
          <columns>
-            <TableColumn fx:id="firstname" prefWidth="85.0" text="Fname" />
-            <TableColumn fx:id="lastname" prefWidth="79.0" text="Lname" />
-            <TableColumn fx:id="bookTitle" prefWidth="75.0" text="Book" />
+            <TableColumn fx:id="firstname" prefWidth="69.0" text="Fname" />
+            <TableColumn fx:id="lastname" prefWidth="66.0" text="Lname" />
+            <TableColumn fx:id="bookTitle" prefWidth="104.0" text="Book" />
             <TableColumn fx:id="bookIsbn" prefWidth="63.0" text="ISBN" />
-            <TableColumn fx:id="borrowDate" prefWidth="146.0" text="BorrowDate" />
-            <TableColumn fx:id="dueDate" prefWidth="183.0" text="Due Date" />
-            <TableColumn fx:id="copyId" prefWidth="316.0" text="Copy ID" />
+            <TableColumn fx:id="borrowDate" prefWidth="106.0" text="BorrowDate" />
+            <TableColumn fx:id="dueDate" prefWidth="86.0" text="Due Date" />
+            <TableColumn fx:id="copyId" prefWidth="301.0" text="Copy ID" />
          </columns></TableView>
    </children>
 
