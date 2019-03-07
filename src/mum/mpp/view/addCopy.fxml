@@ -5,10 +5,12 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane style="-fx-background-image:  url(/mum/mpp/resources/img/backgroung.png)" prefHeight="400.0" prefWidth="590.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mum.mpp.controller.AddCopies">
+<AnchorPane prefHeight="400.0" prefWidth="590.0" style="-fx-background-image:  url(/mum/mpp/resources/img/backgroung.png)" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mum.mpp.controller.AddCopies">
    <children>
       <Text layoutX="113.0" layoutY="136.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Book ISBN" />
-      <JFXButton fx:id="addCopy" layoutX="328.0" layoutY="175.0" onAction="#submit" text="Add Copy" />
+      <JFXButton fx:id="addCopy" layoutX="325.0" layoutY="221.0" onAction="#submit" text="Add Copy" />
       <JFXTextField fx:id="isbn" layoutX="219.0" layoutY="115.0" prefHeight="31.0" prefWidth="182.0" />
+      <JFXTextField fx:id="copyNumber" layoutX="219.0" layoutY="169.0" prefHeight="31.0" prefWidth="182.0" text="1" />
+      <Text layoutX="113.0" layoutY="206.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Number" />
    </children>
 </AnchorPane>

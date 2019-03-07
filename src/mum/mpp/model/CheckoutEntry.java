@@ -16,7 +16,6 @@ public class CheckoutEntry implements Serializable {
 		this.checkoutDate=checkOutDate;
 		this.checkoutRecord=checkOutRecod;
 		this.dueDate=dueDate;
-		System.out.println("CHECK OUT DATE = "+checkOutDate);
 		this.setCheckoutRecord(checkOutRecod);
 	}
 	public LocalDate getCheckoutDate() {
