@@ -2,12 +2,17 @@ package mum.mpp.controller;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.TableView;
 import mum.mpp.model.*;
 import mum.mpp.util.LibraryUtil;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 public class CheckOutBook {
 
@@ -17,6 +22,10 @@ public class CheckOutBook {
     private JFXTextField bookIsdn;
     @FXML
     private JFXButton checkOutButton;
+    @FXML
+    private TableView<CheckoutEntry> tableView;
+
+    ObservableList  observableList = FXCollections.observableArrayList();
 
     @FXML
     public void checkOutBook(ActionEvent ae) {
@@ -51,12 +60,24 @@ public class CheckOutBook {
                 ApplicationInitialDB.saveAllBooks();
                 LibraryUtil.createNewAlert("Checked Out Successfully",
                         "Book Copy id :" + bookCopy.getCopyId() + "\n checked out to  " + selectedLibraryMember.getFirstName() + "  " + selectedLibraryMember.getLastName());
+                updateCheckOutRecordObservableList(selectedLibraryMember.getCheckOutRecord().getCheckOutEntries());
 
             } else {
                 LibraryUtil.createNewAlert("No Available Copies !", "Sorry There is no available copies for this Book, please choose another book");
             }
 
         }
+
+    }
+
+    private void updateCheckOutRecordObservableList(List<CheckoutEntry> checkoutEntries){
+        List<String> stringList = new ArrayList<>();
+        stringList.add("Ahmed");
+        stringList.add("Ahmed");
+        stringList.add("Ahmed");
+        stringList.add("Ahmed");
+        observableList.addAll(stringList);
+        tableView.setItems(observableList);
 
     }
 }

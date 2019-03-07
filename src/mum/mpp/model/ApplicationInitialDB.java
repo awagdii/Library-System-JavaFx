@@ -39,6 +39,9 @@ public class ApplicationInitialDB {
             } else if ((tempF.getName().equals(IConstants.SERIALIZATION_ADMIN_FILENAME))) {
                 administrators = LibraryUtil.readSerializedObject(tempF.getName());
             }
+             else if ((tempF.getName().equals(IConstants.SERIALIZATION_LIBRIRIAN_FILENAME))) {
+                librarians = LibraryUtil.readSerializedObject(tempF.getName());
+            }
 
         }
     }
