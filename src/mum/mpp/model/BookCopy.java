@@ -6,9 +6,9 @@ import java.time.LocalDate;
 public class BookCopy implements Serializable {
     private String copyId;
     private Book book;
-    boolean isAvailable;
+    private boolean isAvailable;
 
-    BookCopy(String copyId, Book book) {
+    public BookCopy(String copyId, Book book) {
         this.book = book;
         this.isAvailable = true;
         this.copyId = copyId;
@@ -43,7 +43,7 @@ public class BookCopy implements Serializable {
     @Override
     public String toString() {
         return "BookCopy{" +
-                "copyId='" + copyId + '\'' + '}';
+                "copyId='" + copyId + '\'' + '}' + "\n";
     }
 }
 

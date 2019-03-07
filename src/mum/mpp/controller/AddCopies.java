@@ -5,7 +5,11 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import mum.mpp.model.ApplicationInitialDB;
 import mum.mpp.model.Book;
+import mum.mpp.model.BookCopy;
+import mum.mpp.util.IConstants;
 import mum.mpp.util.LibraryUtil;
+
+import java.util.UUID;
 
 public class AddCopies {
 
@@ -16,18 +20,20 @@ public class AddCopies {
     public void submit(ActionEvent ae) {
 
         String isbnNumber = isbn.getText();
-        Book selectedBook=null;
+        Book selectedBook = null;
         for (Book book : ApplicationInitialDB.books) {
             if (book.getIsbn().equals(isbnNumber)) {
                 selectedBook = book;
             }
         }
 
-        if(selectedBook!=null){
-            
-        }else {
+        if (selectedBook != null) {
+            BookCopy bookCopy = new BookCopy(UUID.randomUUID().toString(), selectedBook);
+            selectedBook.getCopyList().add(bookCopy);
+            ApplicationInitialDB.saveAllBooks();
+            LibraryUtil.createNewAlert("Book Added Successfully!", "Successfully Added a new Copy for Book :" + selectedBook.getTitle() + "\n Book Copy ID :" + bookCopy.getCopyId());
+        } else {
             LibraryUtil.createNewAlert("Book Not Found !", "Please Enter a valid ISBN number");
         }
-
     }
 }

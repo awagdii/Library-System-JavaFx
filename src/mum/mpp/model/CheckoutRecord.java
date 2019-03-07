@@ -18,9 +18,8 @@ public void setCheckOutEntries(ArrayList<CheckoutEntry> checkOutEntries) {
 	this.checkOutEntries = checkOutEntries;
 }
 
-public CheckoutRecord(LocalDate checkOutDate,LocalDate dueDate,BookCopy bookCopy,LibraryMember libraryMember){
+public CheckoutRecord(LibraryMember libraryMember){
  	  this.libraryMember=libraryMember;
- 	  addCheckOutEntry(checkOutDate,dueDate,bookCopy);
 }
 
 

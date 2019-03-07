@@ -10,8 +10,11 @@ import mum.mpp.model.ApplicationInitialDB;
 
 public class Main extends Application {
     public static void main(String[] args) {
-        ApplicationInitialDB.prepareSomeInitialData();
         ApplicationInitialDB.loadInitialDB();
+        if (ApplicationInitialDB.books != null && ApplicationInitialDB.books.isEmpty()) {
+            ApplicationInitialDB.prepareSomeInitialData();
+            ApplicationInitialDB.loadInitialDB();
+        }
         LauncherImpl.launchApplication(Login.class, SplashScreenLoader.class, args);
 
     }

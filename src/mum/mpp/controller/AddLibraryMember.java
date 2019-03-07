@@ -10,7 +10,7 @@ import javafx.fxml.Initializable;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class LibraryMember implements Initializable {
+public class AddLibraryMember implements Initializable {
     @FXML
     private JFXTextField idField;
     @FXML

@@ -23,15 +23,16 @@ public class ApplicationInitialDB {
     public static List<Book> books = new ArrayList<>();
     public static List<Administrator> administrators = new ArrayList<>();
 
-    public static ApplicationInitialDB loadInitialDB() {
+    public static void loadInitialDB() {
         File file = new File(IConstants.SERIALIZATION_ROOT_FOLDER);
         File[] dataFiles = file.listFiles();
-        ApplicationInitialDB aid = new ApplicationInitialDB();
         for (File tempF : dataFiles) {
             if (tempF.getName().equals(IConstants.SERIALIZATION_BOOK_FILENAME)) {
                 books = LibraryUtil.readSerializedObject(tempF.getName());
+//                System.out.println(books);
             } else if (tempF.getName().equals(IConstants.SERIALIZATION_LIB_MEMBER_FILENAME)) {
                 libraryMembers = LibraryUtil.readSerializedObject(tempF.getName());
+                System.out.println(libraryMembers);
             } else if ((tempF.getName().equals(IConstants.SERIALIZATION_SUPER_ADMIN_FILENAME))) {
                 superAdministrators = LibraryUtil.readSerializedObject(tempF.getName());
             } else if ((tempF.getName().equals(IConstants.SERIALIZATION_ADMIN_FILENAME))) {
@@ -39,8 +40,6 @@ public class ApplicationInitialDB {
             }
 
         }
-
-        return aid;
     }
 
     public static void prepareSomeInitialData() {
@@ -126,8 +125,6 @@ public class ApplicationInitialDB {
         new BookCopy(UUID.randomUUID().toString(), book3);
         new BookCopy(UUID.randomUUID().toString(), book3);
 
-
-        System.out.println(book1);
         ArrayList<Book> books = new ArrayList<>();
         books.add(book1);
         books.add(book2);
@@ -136,32 +133,31 @@ public class ApplicationInitialDB {
         LibraryUtil.writeSerializedObject(books, IConstants.SERIALIZATION_BOOK_FILENAME);
 
 
-        LibraryMember libM1 = new LibraryMember();
+        LibraryMember libM1 = new LibraryMember("1");
         libM1.setFirstName("Kai");
         libM1.setLastName("Wang");
-        libM1.setMemberId("123");
         libM1.setPhoneNumber("+1(641)-9712212");
         libM1.setAddress(address1);
 
 
-        CheckoutRecord record1 = new CheckoutRecord(LocalDate.of(2019, Month.FEBRUARY, 1), LocalDate.of(2019, Month.FEBRUARY, 22),  book1.getCopyList().get(0), libM1);
+        CheckoutRecord record1 = new CheckoutRecord(libM1);
         record1.getCheckOutEntries().add(new CheckoutEntry(LocalDate.of(2019, 3, 1),
                 LocalDate.of(2019, 3, 8), book1.getCopyList().get(0), record1));
 
         record1.getCheckOutEntries().add(new CheckoutEntry(LocalDate.of(2019, 3, 8),
-                LocalDate.of(2019, 3, 15),  book1.getCopyList().get(0), record1));
+                LocalDate.of(2019, 3, 15), book1.getCopyList().get(0), record1));
 
         libM1.setCheckOutRecord(record1);
 
 
-        LibraryMember libM2 = new LibraryMember();
+        LibraryMember libM2 = new LibraryMember("2");
         libM2.setFirstName("Wagdi");
         libM2.setLastName("Zakzok");
         libM2.setPhoneNumber("+1(641)-9712212");
         libM2.setAddress(address1);
 
 
-        LibraryMember libM3 = new LibraryMember();
+        LibraryMember libM3 = new LibraryMember("3");
         libM3.setFirstName("Hesham");
         libM3.setLastName("Mahmoud");
         libM3.setPhoneNumber("+1(641)-9712212");
@@ -180,5 +176,11 @@ public class ApplicationInitialDB {
         librarians.add(l1);
         LibraryUtil.writeSerializedObject(librarians, IConstants.SERIALIZATION_LIBRIRIAN_FILENAME);
 
+        System.out.println(book2);
+
+    }
+
+    public static void saveAllBooks() {
+        LibraryUtil.writeSerializedObject(ApplicationInitialDB.books, IConstants.SERIALIZATION_BOOK_FILENAME);
     }
 }

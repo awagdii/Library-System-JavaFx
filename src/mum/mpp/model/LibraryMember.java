@@ -16,17 +16,20 @@ public class LibraryMember extends Person implements Serializable {
         this.checkOutRecord = checkOutRecord;
     }
 
-    public LibraryMember() {
+    public LibraryMember(String memberId) {
+        this.memberId = memberId;
+        this.checkOutRecord= new CheckoutRecord(this);
     }
 
     public LibraryMember(String firstName, String lastName, String phoneNumber, Address address) {
         super(firstName, lastName, phoneNumber, address);
+        this.checkOutRecord= new CheckoutRecord(this);
     }
 
 
     @Override
     public String toString() {
-        return "LibraryMember{" +
+        return "AddLibraryMember{" +
                 "firstName='" + getFirstName() + '\'' +
                 ", lastName='" + getLastName() + '\'' +
                 ", phoneNumber='" + getPhoneNumber() + '\'' +
