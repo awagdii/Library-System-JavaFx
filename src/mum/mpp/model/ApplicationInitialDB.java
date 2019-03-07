@@ -72,8 +72,8 @@ public class ApplicationInitialDB {
 
 
         Address address1 = new Address();
-        address1.setCity("Newyork");
-        address1.setState("Taxes");
+        address1.setCity("NewYork");
+        address1.setState("California");
         address1.setZip("129837");
         address1.setStreet("10Nth 8th Street");
 
@@ -90,8 +90,8 @@ public class ApplicationInitialDB {
 
         Author author = new Author();
         author.setAddress(address1);
-        author.setBio("12 book");
-        author.setCredentials("Iam Credentials");
+        author.setBio("Chinese Writer has 12 books");
+        author.setCredentials("Cerdentials");
         author.setFirstName("Ken");
         author.setLastName("Wang");
         author.setPhoneNumber("+1(641)-67212111");
@@ -103,7 +103,7 @@ public class ApplicationInitialDB {
         author11.setBio("14 book");
         author11.setCredentials("Iam Credentials");
         author11.setFirstName("Frenchez");
-        author11.setLastName("micheal");
+        author11.setLastName("Micheal");
         author11.setPhoneNumber("+1(641)-67212111");
 
 

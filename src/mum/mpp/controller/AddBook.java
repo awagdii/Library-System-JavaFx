@@ -63,38 +63,38 @@ public class AddBook implements Initializable {
                 return;
             }
         }
+
         int noOfCopies=Integer.parseInt(getCopyCount().getText());
         Book book=null;
+        IndexedCheckModel<String> selectedAuthors=null;
+
         for(int i=0;i<=noOfCopies;i++) {
-            if(i==0) {
-               book= new Book(Integer.toString(i), getTitle().getText(), getIsbn().getText(),Integer.parseInt(getCheckOutDays().getValue()),null);
+            if (i == 0) {
+                book = new Book(Integer.toString(i), getTitle().getText(), getIsbn().getText(), Integer.parseInt(getCheckOutDays().getValue()), null);
             }
-            book.addBookCopy(Integer.toString(i),book);
-            IndexedCheckModel<String> selectedAuthors=authors.getCheckModel();
-
+            book.addBookCopy(Integer.toString(i), book);
+            selectedAuthors = authors.getCheckModel();
+            if (selectedAuthors.getCheckedItems() != null && selectedAuthors.getCheckedItems().size() <= 0) {
+                LibraryUtil.createNewAlert("Validation Message", "Book should has at least one author");
+                return;
+            }
+        }
             ArrayList<Author> authorsArrayList=new ArrayList<>();
-
-            System.out.println(selectedAuthors.getCheckedItems().size() + " > >>>>>>>>    Selected Items");
             for(int j=0;j<selectedAuthors.getCheckedItems().size();j++){
                 String selectedName=selectedAuthors.getCheckedItems().get(j);
-                System.out.println(selectedName + ">>>>>>>Hisham>>>>>>>>>");
-
                 String[] selectedSplitted =selectedName.split(" ");
                 for(Author a:ApplicationInitialDB.authors){
                     if(a.getFirstName().equals(selectedSplitted[0]) && a.getLastName().equals(selectedSplitted[1])){
                          authorsArrayList.add(a);
                         displayedNames.append(a.getFirstName()+"  "+a.getLastName()+ " ");
-                        System.out.println(displayedNames + ">>>>>>>>>>>>>>>>"+j);
                     }
                 }
             }
-            System.out.println(authorsArrayList.size() + ">>>>>>>>>FINAL SIZE>>>>>>>");
 
-            book.setAuthorList(authorsArrayList);
-        }
+        book.setAuthorList(authorsArrayList);
         if(book!=null) {
             ApplicationInitialDB.books.add(book);
-            LibraryUtil.createNewAlert("Successful action","Book was added successfully with "+noOfCopies);
+            LibraryUtil.createNewAlert("Successful action","Book was added successfully with "+noOfCopies+" selected Authors count : "+authorsArrayList.size());
         }
 
     }
