@@ -13,8 +13,10 @@ public class CheckoutEntry implements Serializable {
 
 	CheckoutEntry(LocalDate checkOutDate,LocalDate dueDate,BookCopy bookCopy,CheckoutRecord checkOutRecod){
 		this.bookCopy=bookCopy;
+		this.checkoutDate=checkOutDate;
 		this.checkoutRecord=checkOutRecod;
 		this.dueDate=dueDate;
+		System.out.println("CHECK OUT DATE = "+checkOutDate);
 		this.setCheckoutRecord(checkOutRecod);
 	}
 	public LocalDate getCheckoutDate() {
