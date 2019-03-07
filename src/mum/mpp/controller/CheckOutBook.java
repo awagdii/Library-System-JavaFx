@@ -11,7 +11,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import mum.mpp.model.*;
-import mum.mpp.util.CheckOutEntryTableView;
+import mum.mpp.model.CheckOutEntryTableView;
 import mum.mpp.util.LibraryUtil;
 
 import java.net.URL;

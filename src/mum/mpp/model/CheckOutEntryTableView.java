@@ -1,4 +1,4 @@
-package mum.mpp.util;
+package mum.mpp.model;
 
 import javafx.beans.property.SimpleStringProperty;
 
