@@ -96,7 +96,7 @@ public class AddBook implements Initializable {
         book.setAuthorList(authorsArrayList);
         if (book != null) {
             ApplicationInitialDB.books.add(book);
-            LibraryUtil.createNewAlert("Successful action", "Book was added successfully with " + noOfCopies + " selected Authors count : " + authorsArrayList.size());
+            LibraryUtil.createNewAlert("Successful action", "Book was added successfully with " + noOfCopies + "copies and selected Authors count : " + authorsArrayList.size());
         }
 
     }
