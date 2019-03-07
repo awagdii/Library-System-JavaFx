@@ -20,59 +20,60 @@ import java.lang.reflect.Array;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
+import java.util.UUID;
 
 public class AddBook implements Initializable {
     @FXML
-    private JFXTextField title=new JFXTextField();
+    private JFXTextField title = new JFXTextField();
     @FXML
-    private JFXTextField isbn=new JFXTextField();
+    private JFXTextField isbn = new JFXTextField();
     @FXML
-    private JFXTextField copyCount=new JFXTextField();
+    private JFXTextField copyCount = new JFXTextField();
     @FXML
-    private ComboBox<String> checkOutDays=new ComboBox<>();
+    private ComboBox<String> checkOutDays = new ComboBox<>();
 
     @FXML
-    CheckComboBox<String> authors=new CheckComboBox<>();
+    CheckComboBox<String> authors = new CheckComboBox<>();
 
 
     @FXML
     protected void addBookAction(ActionEvent event) {
 
-        if(getTitle().getText() == null || getIsbn().getText() == null
+        if (getTitle().getText() == null || getIsbn().getText() == null
                 || getCopyCount().getText().equals("")
-                || getTitle().getText()==null || getIsbn().getText().equals("") || getCopyCount().getText().equals("")){
+                || getTitle().getText() == null || getIsbn().getText().equals("") || getCopyCount().getText().equals("")) {
 
-            String message="Some required Fields are missed";
+            String message = "Some required Fields are missed";
 
-            LibraryUtil.createNewAlert("Input Validation Error",message);
+            LibraryUtil.createNewAlert("Input Validation Error", message);
             return;
         }
 
-        if(getIsbn().getText()!=null && !getIsbn().getText().equals("")){
-            for(Book book: ApplicationInitialDB.books){
-                if(book.getIsbn().equals(getIsbn().getText())){
-                    LibraryUtil.createNewAlert("Input Validation Error","Duplicated ISBN Id, Please enter different Id");
+        if (getIsbn().getText() != null && !getIsbn().getText().equals("")) {
+            for (Book book : ApplicationInitialDB.books) {
+                if (book.getIsbn().equals(getIsbn().getText())) {
+                    LibraryUtil.createNewAlert("Input Validation Error", "Duplicated ISBN Id, Please enter different Id");
                     return;
                 }
             }
         }
-        StringBuffer displayedNames=new StringBuffer("");
-        if(getIsbn().getText()!=null && getCopyCount().getText()!=null ){
-            if(!ValidatorUtil.isNumeric(getIsbn().getText())||!ValidatorUtil.isNumeric(getCopyCount().getText())){
-                LibraryUtil.createNewAlert("Input Validation Error","ISBN , CopyCount, Check Out Days should has numeric values only");
+        StringBuffer displayedNames = new StringBuffer("");
+        if (getIsbn().getText() != null && getCopyCount().getText() != null) {
+            if (!ValidatorUtil.isNumeric(getIsbn().getText()) || !ValidatorUtil.isNumeric(getCopyCount().getText())) {
+                LibraryUtil.createNewAlert("Input Validation Error", "ISBN , CopyCount, Check Out Days should has numeric values only");
                 return;
             }
         }
 
-        int noOfCopies=Integer.parseInt(getCopyCount().getText());
-        Book book=null;
-        IndexedCheckModel<String> selectedAuthors=null;
+        int noOfCopies = Integer.parseInt(getCopyCount().getText());
+        Book book = null;
+        IndexedCheckModel<String> selectedAuthors = null;
 
-        for(int i=0;i<noOfCopies;i++) {
+        for (int i = 0; i < noOfCopies; i++) {
             if (i == 0) {
-                book = new Book(Integer.toString(i), getTitle().getText(), getIsbn().getText(), Integer.parseInt(getCheckOutDays().getValue()), null);
-            }else{
-                book.addBookCopy(Integer.toString(i), book);
+                book = new Book(UUID.randomUUID().toString(), getTitle().getText(), getIsbn().getText(), Integer.parseInt(getCheckOutDays().getValue()), null);
+            } else {
+                book.addBookCopy(UUID.randomUUID().toString(), book);
             }
             selectedAuthors = authors.getCheckModel();
             if (selectedAuthors.getCheckedItems() != null && selectedAuthors.getCheckedItems().size() <= 0) {
@@ -80,22 +81,22 @@ public class AddBook implements Initializable {
                 return;
             }
         }
-            ArrayList<Author> authorsArrayList=new ArrayList<>();
-            for(int j=0;j<selectedAuthors.getCheckedItems().size();j++){
-                String selectedName=selectedAuthors.getCheckedItems().get(j);
-                String[] selectedSplitted =selectedName.split(" ");
-                for(Author a:ApplicationInitialDB.authors){
-                    if(a.getFirstName().equals(selectedSplitted[0]) && a.getLastName().equals(selectedSplitted[1])){
-                         authorsArrayList.add(a);
-                        displayedNames.append(a.getFirstName()+"  "+a.getLastName()+ " ");
-                    }
+        ArrayList<Author> authorsArrayList = new ArrayList<>();
+        for (int j = 0; j < selectedAuthors.getCheckedItems().size(); j++) {
+            String selectedName = selectedAuthors.getCheckedItems().get(j);
+            String[] selectedSplitted = selectedName.split(" ");
+            for (Author a : ApplicationInitialDB.authors) {
+                if (a.getFirstName().equals(selectedSplitted[0]) && a.getLastName().equals(selectedSplitted[1])) {
+                    authorsArrayList.add(a);
+                    displayedNames.append(a.getFirstName() + "  " + a.getLastName() + " ");
                 }
             }
+        }
 
         book.setAuthorList(authorsArrayList);
-        if(book!=null) {
+        if (book != null) {
             ApplicationInitialDB.books.add(book);
-            LibraryUtil.createNewAlert("Successful action","Book was added successfully with "+noOfCopies+" selected Authors count : "+authorsArrayList.size());
+            LibraryUtil.createNewAlert("Successful action", "Book was added successfully with " + noOfCopies + " selected Authors count : " + authorsArrayList.size());
         }
 
     }
@@ -132,9 +133,9 @@ public class AddBook implements Initializable {
         this.checkOutDays = checkOutDays;
     }
 
-    public void initialize(URL location, ResourceBundle resources){
+    public void initialize(URL location, ResourceBundle resources) {
         String days[] =
-                { "7", "21" };
+                {"7", "21"};
 
 
         checkOutDays.getItems().clear();
@@ -142,9 +143,9 @@ public class AddBook implements Initializable {
         checkOutDays.getSelectionModel().select(1);
 
 
-        ArrayList<String> authorsList=new ArrayList<>();
-        for(Author a:ApplicationInitialDB.authors){
-            authorsList.add(a.getFirstName()+" "+a.getLastName());
+        ArrayList<String> authorsList = new ArrayList<>();
+        for (Author a : ApplicationInitialDB.authors) {
+            authorsList.add(a.getFirstName() + " " + a.getLastName());
         }
 
         authors.getItems().addAll(authorsList);
