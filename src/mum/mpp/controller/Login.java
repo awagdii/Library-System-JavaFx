@@ -15,6 +15,7 @@ import mum.mpp.business.IServices;
 import mum.mpp.business.ServicesImp;
 import mum.mpp.model.Authorizable;
 import mum.mpp.model.LibraryMemberAuthorization;
+import mum.mpp.util.LibraryUtil;
 
 import java.io.IOException;
 
@@ -48,6 +49,12 @@ public class Login extends Application {
         String usernameInput, passInput;
         usernameInput = username.getText();
         passInput = password.getText();
+
+
+        if(usernameInput == null || passInput == null || usernameInput.equals("") || passInput.equals("")){
+            LibraryUtil.createNewAlert("Input Validation Error","UserName and Password are required!!");
+            return;
+        }
 
         Authorizable result = services.login(usernameInput, passInput);
 

@@ -8,6 +8,7 @@ public static  final String SERIALIZATION_LIB_MEMBER_FILENAME ="LIB_MEMBERS.txt"
 public static  final String SERIALIZATION_LIBRIRIAN_FILENAME ="LIBRERIANS.txt";
 public static  final String SERIALIZATION_BOOK_FILENAME ="BOOKS.txt";
 public static final String SERIALIZATION_ADMIN_FILENAME = "ADMINS.txt";
+public static final String  SERIALIZATION_AUTHORS_FILENAME="AUTHORS.txt";
 
 
 	

@@ -20,6 +20,7 @@ public class ApplicationInitialDB {
     public static List<SuperAdministrator> superAdministrators = new ArrayList<>();
     public static List<Book> books = new ArrayList<>();
     public static List<Administrator> administrators = new ArrayList<>();
+    public static List<Author> authors = new ArrayList<>();
 
     public static void loadInitialDB() {
         File file = new File(IConstants.SERIALIZATION_ROOT_FOLDER);
@@ -37,6 +38,8 @@ public class ApplicationInitialDB {
             }
              else if ((tempF.getName().equals(IConstants.SERIALIZATION_LIBRIRIAN_FILENAME))) {
                 librarians = LibraryUtil.readSerializedObject(tempF.getName());
+            }else if ((tempF.getName().equals(IConstants.SERIALIZATION_AUTHORS_FILENAME))) {
+                authors = LibraryUtil.readSerializedObject(tempF.getName());
             }
 
         }
@@ -65,8 +68,8 @@ public class ApplicationInitialDB {
 
 
         Address address1 = new Address();
-        address1.setCity("Newyork");
-        address1.setState("Taxes");
+        address1.setCity("NewYork");
+        address1.setState("California");
         address1.setZip("129837");
         address1.setStreet("10Nth 8th Street");
 
@@ -83,13 +86,42 @@ public class ApplicationInitialDB {
 
         Author author = new Author();
         author.setAddress(address1);
-        author.setBio("12 book");
-        author.setCredentials("Iam Credentials");
-        author.setFirstName("author first name");
-        author.setLastName("author last name");
+        author.setBio("Chinese Writer has 12 books");
+        author.setCredentials("Cerdentials");
+        author.setFirstName("Ken");
+        author.setLastName("Wang");
         author.setPhoneNumber("+1(641)-67212111");
         ArrayList<Author> authors = new ArrayList<>();
-        authors.add(author);
+
+
+        Author author11 = new Author();
+        author11.setAddress(address1);
+        author11.setBio("14 book");
+        author11.setCredentials("Iam Credentials");
+        author11.setFirstName("Frenchez");
+        author11.setLastName("Micheal");
+        author11.setPhoneNumber("+1(641)-67212111");
+
+
+
+        authors.add(author11);
+
+
+
+        Author author14 = new Author();
+        author14.setAddress(address1);
+        author14.setBio("17 book");
+        author14.setCredentials("Iam Credentials");
+        author14.setFirstName("Mariem");
+        author14.setLastName("Mortada");
+        author14.setPhoneNumber("+1(641)-67212111");
+
+
+
+        authors.add(author14);
+
+
+
         Book book1 = new Book(UUID.randomUUID().toString(), "Secret Of Life", "1111", 3, authors);
       BookCopy bookCopy1=  new BookCopy(UUID.randomUUID().toString(), book1);
         new BookCopy(UUID.randomUUID().toString(), book1);
@@ -100,8 +132,8 @@ public class ApplicationInitialDB {
         author2.setAddress(address1);
         author2.setBio("19 book");
         author2.setCredentials("Iam Credentials");
-        author2.setFirstName("author2 first name");
-        author2.setLastName("author2 last name");
+        author2.setFirstName("kefin");
+        author2.setLastName("don");
         author2.setPhoneNumber("+1(641)-672000111");
         ArrayList<Author> authors2 = new ArrayList<>();
         authors2.add(author2);
@@ -116,8 +148,8 @@ public class ApplicationInitialDB {
         author3.setAddress(address1);
         author3.setBio("10 book");
         author3.setCredentials("Iam Credentials");
-        author3.setFirstName("author first name");
-        author3.setLastName("author last name");
+        author3.setFirstName("hernandiz");
+        author3.setLastName("kamal");
         author3.setPhoneNumber("+1(641)-672199999");
         ArrayList<Author> authors3 = new ArrayList<>();
         authors3.add(author3);
@@ -134,6 +166,7 @@ public class ApplicationInitialDB {
 
 
         LibraryMember libM1 = new LibraryMember("1");
+        libM1.setMemberId("123");
         libM1.setFirstName("Kai");
         libM1.setLastName("Wang");
         libM1.setPhoneNumber("+1(641)-9712212");
@@ -149,6 +182,7 @@ public class ApplicationInitialDB {
 
 
         LibraryMember libM2 = new LibraryMember("2");
+        libM2.setMemberId("232");
         libM2.setFirstName("Wagdi");
         libM2.setLastName("Zakzok");
         libM2.setPhoneNumber("+1(641)-9712212");
@@ -156,6 +190,7 @@ public class ApplicationInitialDB {
 
 
         LibraryMember libM3 = new LibraryMember("3");
+        libM3.setMemberId("122");
         libM3.setFirstName("Hesham");
         libM3.setLastName("Mahmoud");
         libM3.setPhoneNumber("+1(641)-9712212");
@@ -175,6 +210,13 @@ public class ApplicationInitialDB {
         LibraryUtil.writeSerializedObject(librarians, IConstants.SERIALIZATION_LIBRIRIAN_FILENAME);
 
         System.out.println(book2);
+
+
+        authors.add(author2);
+        authors.add(author3);
+
+        LibraryUtil.writeSerializedObject(authors, IConstants.SERIALIZATION_AUTHORS_FILENAME);
+
 
     }
 

@@ -3,6 +3,7 @@ package mum.mpp.controller;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextField;
+import com.jfoenix.validation.RequiredFieldValidator;
 import javafx.fxml.FXML;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
@@ -10,6 +11,10 @@ import javafx.scene.control.Alert;
 import mum.mpp.business.IServices;
 import mum.mpp.business.ServicesImp;
 import mum.mpp.model.Address;
+import mum.mpp.model.ApplicationInitialDB;
+import mum.mpp.model.LibraryMember;
+import mum.mpp.util.LibraryUtil;
+import mum.mpp.util.ValidatorUtil;
 import mum.mpp.util.transferobj.PersonActionResult;
 
 import java.net.URL;
@@ -42,6 +47,34 @@ public class AddLibraryMember implements Initializable {
 
     @FXML
     protected void clickSave(ActionEvent event) {
+
+        if(idField.getText() == null || firstNameField.getText() == null || lastNameField.getText()==null
+                || idField.getText().equals("")
+                || phoneField.getText()==null || lastNameField.getText().equals("") || firstNameField.getText().equals("") || phoneField.getText().equals("")){
+
+            String message="Some required Fields are missed";
+
+            LibraryUtil.createNewAlert("Input Validation Error",message);
+            return;
+        }
+
+        if(idField.getText()!=null && !idField.getText().equals("")){
+            for(LibraryMember lm:ApplicationInitialDB.libraryMembers){
+                System.out.println(lm.getMemberId()+">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"+idField.getText());
+                if(lm.getMemberId().equals(idField.getText())){
+                    LibraryUtil.createNewAlert("Input Validation Error","Duplicated Membership Id, Please enter different Id");
+                    return;
+                }
+            }
+        }
+        if(phoneField.getText()!=null){
+            if(!ValidatorUtil.isNumeric(phoneField.getText())){
+                LibraryUtil.createNewAlert("Input Validation Error","Phone Number should has numeric values only");
+                return;
+            }
+        }
+
+
         mum.mpp.model.LibraryMember libraryMember = new mum.mpp.model.LibraryMember(idField.getText());
         libraryMember.setFirstName(firstNameField.getText());
         libraryMember.setLastName(lastNameField.getText());
@@ -52,6 +85,11 @@ public class AddLibraryMember implements Initializable {
         address.setStreet(streetField.getText());
         address.setZip(zipField.getText());
         libraryMember.setAddress(address);
+
+
+
+
+
         PersonActionResult par = services.addLibraryMember(libraryMember);
         if (par.isResult()) {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
