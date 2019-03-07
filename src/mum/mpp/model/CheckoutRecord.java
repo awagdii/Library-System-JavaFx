@@ -48,7 +48,7 @@ public class CheckoutRecord implements Serializable {
 		String lastName = libraryMember.getLastName();
 
 		for (CheckoutEntry entry: checkOutEntries) {
-			string += formatter.format("%-9s | %-10s | %-10s | %-10tD | %-10tD %n", memID, firstName, lastName, entry.getCheckoutDate(), entry.getDueDate());
+			string = " "+formatter.format("%-9s | %-10s | %-10s | %-10tD | %-10tD %n", memID, firstName, lastName, entry.getCheckoutDate(), entry.getDueDate());
 		}
 		return string;
 	}
