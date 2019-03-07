@@ -9,8 +9,7 @@ import java.util.List;
 public class Book implements Serializable {
 
 
-	public Book(String copyId,String title,String isbn,int avaiableCount,int borrowModel,ArrayList<Author> authors){ this.authorList=authors;
-       this.isAvaiable=true;
+	public Book(String copyId,String title,String isbn,int borrowModel,ArrayList<Author> authors){ this.authorList=authors;
        this.borrowModel =borrowModel;
        this.isbn=isbn;
        this.title=title;
@@ -19,8 +18,6 @@ public class Book implements Serializable {
 
 	private String title;
 	private String isbn;
-
-	private boolean isAvaiable;
 
 	private int borrowModel=21;  //this may be 7 or 21 DAYS
 
@@ -48,18 +45,11 @@ public class Book implements Serializable {
 	public List<BookCopy> getCopyList() {
 		return copyList;
 	}
-	public void setCopyList(List<BookCopy> copyList) {
-		this.copyList = copyList;
-	}
-
-
 
 
 	public void addBookCopy(String copyId, Book book){
 		copyList.add(new BookCopy(copyId, this));
 	}
-
-
 
 
 	public int getBorrowModel() {
@@ -70,11 +60,14 @@ public class Book implements Serializable {
 		this.borrowModel = borrowModel;
 	}
 
-	public boolean isAvaiable() {
-		return isAvaiable;
-	}
-
-	public void setAvaiable(boolean avaiable) {
-		isAvaiable = avaiable;
+	@Override
+	public String toString() {
+		return "Book{" +
+				"title='" + title + '\'' +
+				", isbn='" + isbn + '\'' +
+				", borrowModel=" + borrowModel +
+				", authorList=" + authorList +
+				", copyList=" + copyList +
+				'}';
 	}
 }

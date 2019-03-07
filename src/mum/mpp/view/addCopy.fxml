@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
-<?import javafx.scene.control.TextField?>
+<?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Text?>
 
 <AnchorPane prefHeight="400.0" prefWidth="590.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mum.mpp.controller.AddCopies">
    <children>
-      <TextField layoutX="227.0" layoutY="115.0" />
       <Text layoutX="113.0" layoutY="136.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Book ISBN" />
-      <JFXButton layoutX="328.0" layoutY="175.0" text="Add Copy" />
+      <JFXButton fx:id="addCopy" layoutX="328.0" layoutY="175.0" onAction="#submit" text="Add Copy" />
+      <JFXTextField fx:id="isbn" layoutX="219.0" layoutY="115.0" prefHeight="31.0" prefWidth="182.0" />
    </children>
 </AnchorPane>

@@ -9,12 +9,14 @@ import java.time.Month;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.UUID;
 
 public class ApplicationInitialDB {
 
     private ApplicationInitialDB() {
         // TODO Auto-generated constructor stub
     }
+
     public static List<Librarian> librarians = new ArrayList<>();
     public static List<LibraryMember> libraryMembers = new ArrayList<>();
     public static List<SuperAdministrator> superAdministrators = new ArrayList<>();
@@ -89,23 +91,11 @@ public class ApplicationInitialDB {
         author.setPhoneNumber("+1(641)-67212111");
         ArrayList<Author> authors = new ArrayList<>();
         authors.add(author);
-        Book book1 = new Book("0","Secret Of Life","213",3,21,authors);
-        BookCopy bookcopy1 = new BookCopy("1",book1);
-        bookcopy1.setCopyId("12_11");
-        BookCopy bookcopy2 =new BookCopy("2",book1);
-        bookcopy2.setCopyId("12_101");
-        BookCopy bookcopy3 =new BookCopy("3",book1);
-        bookcopy3.setCopyId("12_141");
-        BookCopy bookcopy4 = new BookCopy("4",book1);
-        bookcopy4.setCopyId("12_19");
-        List<BookCopy> bookcopies = book1.getCopyList();
-        bookcopies.add(bookcopy1);
-        bookcopies.add(bookcopy2);
-        bookcopies.add(bookcopy3);
-        bookcopies.add(bookcopy4);
-        book1.setCopyList(bookcopies);
-
-
+        Book book1 = new Book(UUID.randomUUID().toString(), "Secret Of Life", "1111", 3, authors);
+        new BookCopy(UUID.randomUUID().toString(), book1);
+        new BookCopy(UUID.randomUUID().toString(), book1);
+        new BookCopy(UUID.randomUUID().toString(), book1);
+        new BookCopy(UUID.randomUUID().toString(), book1);
 
         Author author2 = new Author();
         author2.setAddress(address1);
@@ -116,17 +106,11 @@ public class ApplicationInitialDB {
         author2.setPhoneNumber("+1(641)-672000111");
         ArrayList<Author> authors2 = new ArrayList<>();
         authors2.add(author2);
-        Book book2 = new Book("0","Java technology","210",30,21,authors2);
-        BookCopy bookcopy5 = new BookCopy("1",book2);
-        BookCopy bookcopy6 =new BookCopy("2",book2);
-        BookCopy bookcopy7 =new BookCopy("3",book2);
-        BookCopy bookcopy8 = new BookCopy("4",book2);
-        List<BookCopy> bookcopies2 = book2.getCopyList();
-        bookcopies.add(bookcopy4);
-        bookcopies.add(bookcopy5);
-        bookcopies.add(bookcopy6);
-        bookcopies.add(bookcopy7);
-        book1.setCopyList(bookcopies2);
+        Book book2 = new Book(UUID.randomUUID().toString(), "Java technology", "2222", 30, authors2);
+        new BookCopy(UUID.randomUUID().toString(), book2);
+        new BookCopy(UUID.randomUUID().toString(), book2);
+        new BookCopy(UUID.randomUUID().toString(), book2);
+        new BookCopy(UUID.randomUUID().toString(), book2);
 
 
         Author author3 = new Author();
@@ -138,16 +122,12 @@ public class ApplicationInitialDB {
         author3.setPhoneNumber("+1(641)-672199999");
         ArrayList<Author> authors3 = new ArrayList<>();
         authors3.add(author3);
-        Book book3 = new Book("0","TM Techniques","299",90,7,authors);
-        BookCopy bookcopy13 = new BookCopy("1",book3);
-        BookCopy bookcopy23 =new BookCopy("2",book3);
-        List<BookCopy> bookcopies3 = book1.getCopyList();
-        bookcopies3.add(bookcopy13);
-        bookcopies3.add(bookcopy23);
-        book3.setCopyList(bookcopies3);
+        Book book3 = new Book(UUID.randomUUID().toString(), "TM Techniques", "3333", 90, authors);
+        new BookCopy(UUID.randomUUID().toString(), book3);
+        new BookCopy(UUID.randomUUID().toString(), book3);
 
 
-
+        System.out.println(book1);
         ArrayList<Book> books = new ArrayList<>();
         books.add(book1);
         books.add(book2);
@@ -164,12 +144,12 @@ public class ApplicationInitialDB {
         libM1.setAddress(address1);
 
 
-        CheckoutRecord record1 = new CheckoutRecord(LocalDate.of(2019, Month.FEBRUARY, 1),LocalDate.of(2019, Month.FEBRUARY, 22),bookcopy1,libM1);
-        record1.getCheckOutEntries().add(new CheckoutEntry (LocalDate.of(2019, 3, 1),
-                                                            LocalDate.of(2019, 3, 8),bookcopy1,record1));
+        CheckoutRecord record1 = new CheckoutRecord(LocalDate.of(2019, Month.FEBRUARY, 1), LocalDate.of(2019, Month.FEBRUARY, 22),  book1.getCopyList().get(0), libM1);
+        record1.getCheckOutEntries().add(new CheckoutEntry(LocalDate.of(2019, 3, 1),
+                LocalDate.of(2019, 3, 8), book1.getCopyList().get(0), record1));
 
-        record1.getCheckOutEntries().add(new CheckoutEntry (LocalDate.of(2019, 3, 8),
-                LocalDate.of(2019, 3, 15),bookcopy2,record1));
+        record1.getCheckOutEntries().add(new CheckoutEntry(LocalDate.of(2019, 3, 8),
+                LocalDate.of(2019, 3, 15),  book1.getCopyList().get(0), record1));
 
         libM1.setCheckOutRecord(record1);
 
@@ -193,7 +173,7 @@ public class ApplicationInitialDB {
         Collections.addAll(libMems, libM1, libM2, libM3);
         LibraryUtil.writeSerializedObject(libMems, IConstants.SERIALIZATION_LIB_MEMBER_FILENAME);
 
-        Librarian l1=new Librarian();
+        Librarian l1 = new Librarian();
         l1.setPassword("librarian");
         l1.setUsername("librarian");
 
