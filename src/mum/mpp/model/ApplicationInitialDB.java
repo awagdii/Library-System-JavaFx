@@ -170,6 +170,7 @@ public class ApplicationInitialDB {
 
 
         LibraryMember libM1 = new LibraryMember("1");
+        libM1.setMemberId("123");
         libM1.setFirstName("Kai");
         libM1.setLastName("Wang");
         libM1.setPhoneNumber("+1(641)-9712212");
@@ -187,6 +188,7 @@ public class ApplicationInitialDB {
 
 
         LibraryMember libM2 = new LibraryMember("2");
+        libM2.setMemberId("232");
         libM2.setFirstName("Wagdi");
         libM2.setLastName("Zakzok");
         libM2.setPhoneNumber("+1(641)-9712212");
@@ -194,6 +196,7 @@ public class ApplicationInitialDB {
 
 
         LibraryMember libM3 = new LibraryMember("3");
+        libM3.setMemberId("122");
         libM3.setFirstName("Hesham");
         libM3.setLastName("Mahmoud");
         libM3.setPhoneNumber("+1(641)-9712212");
