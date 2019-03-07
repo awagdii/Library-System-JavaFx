@@ -76,7 +76,7 @@ public class Login extends Application {
                     stage.setScene(new Scene(fxmlLoader.load()));
                     stage.show();
                 } else if (result.getAuthorization() == LibraryMemberAuthorization.LIBRARIAN) {
-                    FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/mum/mpp/view/libraryMember.fxml"));
+                    FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/mum/mpp/view/checkOutBook.fxml"));
                     Stage stage = new Stage();
                     stage.setTitle("Library Member Page");
                     stage.setScene(new Scene(fxmlLoader.load()));

@@ -2,16 +2,20 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Text?>
 
 <AnchorPane prefHeight="498.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mum.mpp.controller.CheckOutBook">
    <children>
       <JFXTextField fx:id="memberId" layoutX="256.0" layoutY="104.0" prefHeight="31.0" prefWidth="222.0" />
-      <JFXTextField fx:id="bookIsdn" layoutX="256.0" layoutY="178.0"  prefHeight="31.0" prefWidth="222.0" />
+      <JFXTextField fx:id="bookIsdn" layoutX="256.0" layoutY="178.0" prefHeight="31.0" prefWidth="222.0" />
       <Text layoutX="146.0" layoutY="140.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Member ID" />
       <Text layoutX="146.0" layoutY="214.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Book ISBN" />
       <JFXButton layoutX="389.0" layoutY="284.0" onAction="#checkOutBook" text="Check Out" />
+      <TableView fx:id="tableView" layoutX="131.0" layoutY="278.0" prefHeight="200.0" prefWidth="200.0">
+      </TableView>
    </children>
 
 </AnchorPane>

@@ -39,6 +39,9 @@ public class ApplicationInitialDB {
             } else if ((tempF.getName().equals(IConstants.SERIALIZATION_ADMIN_FILENAME))) {
                 administrators = LibraryUtil.readSerializedObject(tempF.getName());
             }
+             else if ((tempF.getName().equals(IConstants.SERIALIZATION_LIBRIRIAN_FILENAME))) {
+                librarians = LibraryUtil.readSerializedObject(tempF.getName());
+            }
 
         }
     }
@@ -185,7 +188,7 @@ public class ApplicationInitialDB {
         LibraryUtil.writeSerializedObject(ApplicationInitialDB.books, IConstants.SERIALIZATION_BOOK_FILENAME);
     }
     public static void saveAllLibraryMembers() {
-        LibraryUtil.writeSerializedObject(ApplicationInitialDB.books, IConstants.SERIALIZATION_LIB_MEMBER_FILENAME);
+        LibraryUtil.writeSerializedObject(ApplicationInitialDB.libraryMembers, IConstants.SERIALIZATION_LIB_MEMBER_FILENAME);
     }
 
 
