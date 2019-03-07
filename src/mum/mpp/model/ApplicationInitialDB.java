@@ -7,10 +7,7 @@ import mum.mpp.util.LibraryUtil;
 import java.io.File;
 import java.time.LocalDate;
 import java.time.Month;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.UUID;
+import java.util.*;
 
 public class ApplicationInitialDB {
 
@@ -30,7 +27,6 @@ public class ApplicationInitialDB {
         for (File tempF : dataFiles) {
             if (tempF.getName().equals(IConstants.SERIALIZATION_BOOK_FILENAME)) {
                 books = LibraryUtil.readSerializedObject(tempF.getName());
-//                System.out.println(books);
             } else if (tempF.getName().equals(IConstants.SERIALIZATION_LIB_MEMBER_FILENAME)) {
                 libraryMembers = LibraryUtil.readSerializedObject(tempF.getName());
                 System.out.println(libraryMembers);
@@ -95,7 +91,7 @@ public class ApplicationInitialDB {
         ArrayList<Author> authors = new ArrayList<>();
         authors.add(author);
         Book book1 = new Book(UUID.randomUUID().toString(), "Secret Of Life", "1111", 3, authors);
-        new BookCopy(UUID.randomUUID().toString(), book1);
+      BookCopy bookCopy1=  new BookCopy(UUID.randomUUID().toString(), book1);
         new BookCopy(UUID.randomUUID().toString(), book1);
         new BookCopy(UUID.randomUUID().toString(), book1);
         new BookCopy(UUID.randomUUID().toString(), book1);
@@ -146,10 +142,8 @@ public class ApplicationInitialDB {
 
         CheckoutRecord record1 = new CheckoutRecord(libM1);
         record1.getCheckOutEntries().add(new CheckoutEntry(LocalDate.of(2019, 3, 1),
-                LocalDate.of(2019, 3, 8), book1.getCopyList().get(0), record1));
-
-        record1.getCheckOutEntries().add(new CheckoutEntry(LocalDate.of(2019, 3, 8),
-                LocalDate.of(2019, 3, 15), book1.getCopyList().get(0), record1));
+                LocalDate.of(2019, 3, 8),bookCopy1, record1));
+        bookCopy1.setAvailable(false);
 
         libM1.setCheckOutRecord(record1);
 

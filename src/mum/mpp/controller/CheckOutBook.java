@@ -6,15 +6,21 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import mum.mpp.model.*;
+import mum.mpp.util.CheckOutEntryTableView;
 import mum.mpp.util.LibraryUtil;
 
+import java.net.URL;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.ResourceBundle;
 
-public class CheckOutBook {
+public class CheckOutBook implements Initializable {
 
     @FXML
     private JFXTextField memberId;
@@ -23,9 +29,22 @@ public class CheckOutBook {
     @FXML
     private JFXButton checkOutButton;
     @FXML
-    private TableView<CheckoutEntry> tableView;
+    private TableView<CheckOutEntryTableView> tbData;
+    @FXML
+    private TableColumn<CheckOutEntryTableView, String> firstname;
+    @FXML
+    private TableColumn<CheckOutEntryTableView, String> lastname;
+    @FXML
+    private TableColumn<CheckOutEntryTableView, String> bookTitle;
+    @FXML
+    private TableColumn<CheckOutEntryTableView, String> bookIsbn;
+    @FXML
+    private TableColumn<CheckOutEntryTableView, String> borrowDate;
+    @FXML
+    private TableColumn<CheckOutEntryTableView, String> dueDate;
+    @FXML
+    private TableColumn<CheckOutEntryTableView, String> copyId;
 
-    ObservableList  observableList = FXCollections.observableArrayList();
 
     @FXML
     public void checkOutBook(ActionEvent ae) {
@@ -54,7 +73,7 @@ public class CheckOutBook {
             if (bookCopy != null) {
                 LocalDate now = LocalDate.now();
                 LocalDate dueDate = now.plusDays(selectedBook.getBorrowModel());
-                selectedLibraryMember.getCheckOutRecord().addCheckOutEntry(now,dueDate,bookCopy);
+                selectedLibraryMember.getCheckOutRecord().addCheckOutEntry(now, dueDate, bookCopy);
                 bookCopy.setAvailable(false);
                 ApplicationInitialDB.saveAllLibraryMembers();
                 ApplicationInitialDB.saveAllBooks();
@@ -70,14 +89,39 @@ public class CheckOutBook {
 
     }
 
-    private void updateCheckOutRecordObservableList(List<CheckoutEntry> checkoutEntries){
-        List<String> stringList = new ArrayList<>();
-        stringList.add("Ahmed");
-        stringList.add("Ahmed");
-        stringList.add("Ahmed");
-        stringList.add("Ahmed");
-        observableList.addAll(stringList);
-        tableView.setItems(observableList);
+    private void updateCheckOutRecordObservableList(List<CheckoutEntry> checkoutEntries) {
+        List<CheckOutEntryTableView> checkOutEntryTableViews = new ArrayList<>();
+        observableList.clear();
+        for (CheckoutEntry checkoutEntry : checkoutEntries) {
+            String firstname = checkoutEntry.getCheckoutRecord().getLibraryMember().getFirstName();
+            String lastname = checkoutEntry.getCheckoutRecord().getLibraryMember().getLastName();
+            String bookTitle = checkoutEntry.getBookCopy().getBook().getTitle();
+            String bookIsbn = checkoutEntry.getBookCopy().getBook().getIsbn();
+            String borrowDate = checkoutEntry.getCheckoutDate().toString();
+            String dueDate = checkoutEntry.getDueDate().toString();
+            String copyId = checkoutEntry.getBookCopy().getCopyId();
+
+            checkOutEntryTableViews.add(new CheckOutEntryTableView(firstname, lastname, bookTitle, bookIsbn, borrowDate, dueDate, copyId));
+        }
+        observableList.addAll(checkOutEntryTableViews);
+        tbData.setItems(observableList);
 
     }
+
+    // add your data here from any source
+    private ObservableList<CheckOutEntryTableView> observableList = FXCollections.observableArrayList();
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        firstname.setCellValueFactory(new PropertyValueFactory<>("Firstname"));
+        lastname.setCellValueFactory(new PropertyValueFactory<>("Lastname"));
+        bookTitle.setCellValueFactory(new PropertyValueFactory<>("bookTitle"));
+        bookIsbn.setCellValueFactory(new PropertyValueFactory<>("bookIsbn"));
+        borrowDate.setCellValueFactory(new PropertyValueFactory<>("borrowDate"));
+        dueDate.setCellValueFactory(new PropertyValueFactory<>("dueDate"));
+        copyId.setCellValueFactory(new PropertyValueFactory<>("copyId"));
+        tbData.setItems(observableList);
+    }
+
+
 }
