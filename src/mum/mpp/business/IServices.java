@@ -22,6 +22,6 @@ public PersonActionResult addBook(Book book);
 
 public PersonActionResult addBookCopies(Book book, ArrayList<BookCopy> bookCopies);
 
-public PersonActionResult signOut(Person person);
+
 }
 

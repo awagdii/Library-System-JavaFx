@@ -10,17 +10,19 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
-import mum.mpp.model.ApplicationInitialDB;
+import mum.mpp.business.ServicesImp;
+import mum.mpp.dao.ApplicationInitialDB;
 import mum.mpp.model.DisplayLibraryMemberTableView;
 import mum.mpp.model.LibraryMember;
-import mum.mpp.model.CheckOutEntryTableView;
 import mum.mpp.util.LibraryUtil;
 
 import java.net.URL;
 import java.util.ResourceBundle;
 
 public class DisplaylibraryMember implements Initializable {
-    @FXML
+
+	ServicesImp servicesImp=ServicesImp.getServicesImp();
+	@FXML
 	Button button=new Button();
     @FXML
     TextField libMemberId=new TextField();
@@ -43,11 +45,11 @@ public class DisplaylibraryMember implements Initializable {
 	    	LibraryUtil.createNewAlert("Validation Error", "Lib member ID should be provided");
 	        return;
 	    }
-       for(LibraryMember libM:ApplicationInitialDB.libraryMembers) {
+       for(LibraryMember libM:servicesImp.getLibraryMembers()) {
     	   if(libM.getMemberId().equals(libMemberId.getText())) {
     		   System.out.println(libM);
     		   observableList.add(new DisplayLibraryMemberTableView(libM.getFirstName(),libM.getLastName(),libM.getMemberId(),libM.getAddress().toString(),libM.getPhoneNumber()));
-    	        return;
+    	       return;
     	   }
        }
 		LibraryUtil.createNewAlert("Failed to Find Lib Member ID", "Please check provide existing Lib member id");

@@ -10,6 +10,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import mum.mpp.business.ServicesImp;
+import mum.mpp.dao.ApplicationInitialDB;
 import mum.mpp.model.*;
 import mum.mpp.model.CheckOutEntryTableView;
 import mum.mpp.util.LibraryUtil;
@@ -45,6 +47,7 @@ public class CheckOutBook implements Initializable {
     @FXML
     private TableColumn<CheckOutEntryTableView, String> copyId;
 
+    ServicesImp servicesImp=ServicesImp.getServicesImp();
 
     @FXML
     public void checkOutBook(ActionEvent ae) {
@@ -54,12 +57,12 @@ public class CheckOutBook implements Initializable {
         Book selectedBook = null;
         LibraryMember selectedLibraryMember = null;
 
-        for (Book book : ApplicationInitialDB.books) {
+        for (Book book : servicesImp.getBooks()) {
             if (book.getIsbn().equals(isbn)) {
                 selectedBook = book;
             }
         }
-        for (LibraryMember libraryMember : ApplicationInitialDB.libraryMembers) {
+        for (LibraryMember libraryMember : servicesImp.getLibraryMembers()) {
             if (libraryMember.getMemberId().equals(libMemberId)) {
                 selectedLibraryMember = libraryMember;
             }

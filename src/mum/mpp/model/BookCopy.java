@@ -7,8 +7,8 @@ public class BookCopy implements Serializable {
     private String copyId;
     private Book book;
     private boolean isAvailable;
-
-    public BookCopy(String copyId, Book book) {
+     //package Level
+     BookCopy(String copyId, Book book) {
         this.book = book;
         this.isAvailable = true;
         this.copyId = copyId;

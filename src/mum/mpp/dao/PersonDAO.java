@@ -1,45 +1,58 @@
 package mum.mpp.dao;
 
+import mum.mpp.business.ServicesImp;
 import mum.mpp.model.*;
-import mum.mpp.model.ApplicationInitialDB;
 import mum.mpp.util.LibraryUtil;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class PersonDAO implements IPersonDAO {
-
-
-
     public PersonDAO() {
-        //You can Use this Object for read any data you want
     }
-
-    @Override
-    public ArrayList<Person> loadPersons() {
-        return null;
-    }
-
-    @Override
-    public ArrayList<Book> loadLibraryBooks() {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-    @Override
-    public ArrayList<BookCopy> loadBookCopies() {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-    @Override
-    public CheckoutRecord loadCheckOutRecord() {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
     public <T> void serliazeList(List<T> objs, String listName){
         LibraryUtil.writeSerializedObject(objs,listName);
     }
 
+    public List<SuperAdministrator> getSuperAdmin(){
+        return ApplicationInitialDB.getSuperAdministrators();
+    }
+
+
+    public List<Administrator> getAdmins(){
+        return ApplicationInitialDB.getAdministrators();
+    }
+
+    public List<Librarian> getLibrarians(){
+        return ApplicationInitialDB.getLibrarians();
+    }
+
+    public List<LibraryMember> getLibraryMembers(){
+        return ApplicationInitialDB.getLibraryMembers();
+    }
+
+    public List<Author> getAuthors(){
+        return ApplicationInitialDB.getAuthors();
+    }
+
+    public void addBook(Book book){
+        ApplicationInitialDB.getBooks().add(book);
+    }
+
+    public List<Book> getBooks(){
+        return ApplicationInitialDB.getBooks();
+    }
+    public void saveAllBooks(){
+        ApplicationInitialDB.saveAllBooks();
+    }
+
+    @Override
+    public void loadInitialDB() {
+        ApplicationInitialDB.loadInitialDB();
+        if (ApplicationInitialDB.getBooks() != null && ApplicationInitialDB.getBooks().isEmpty()) {
+            DBUtil.prepareSomeInitialData();
+            ApplicationInitialDB.loadInitialDB();
+        }
+
+    }
 }

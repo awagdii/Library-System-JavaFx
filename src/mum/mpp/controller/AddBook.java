@@ -1,14 +1,14 @@
 package mum.mpp.controller;
 
-import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextField;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ComboBox;
-import mum.mpp.model.ApplicationInitialDB;
+import javafx.scene.input.MouseEvent;
+import mum.mpp.business.ServicesImp;
+import mum.mpp.dao.ApplicationInitialDB;
 import mum.mpp.model.Author;
 import mum.mpp.model.Book;
 import mum.mpp.util.LibraryUtil;
@@ -16,7 +16,6 @@ import mum.mpp.util.ValidatorUtil;
 import org.controlsfx.control.CheckComboBox;
 import org.controlsfx.control.IndexedCheckModel;
 
-import java.lang.reflect.Array;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
@@ -36,6 +35,11 @@ public class AddBook implements Initializable {
     CheckComboBox<String> authors = new CheckComboBox<>();
 
 
+    private ServicesImp serviceImp=ServicesImp.getServicesImp();
+
+
+
+
     @FXML
     protected void addBookAction(ActionEvent event) {
 
@@ -50,12 +54,10 @@ public class AddBook implements Initializable {
         }
 
         if (getIsbn().getText() != null && !getIsbn().getText().equals("")) {
-            for (Book book : ApplicationInitialDB.books) {
-                if (book.getIsbn().equals(getIsbn().getText())) {
+                if (ValidatorUtil.isNotUniqueISBN(getIsbn().getText())) {
                     LibraryUtil.createNewAlert("Input Validation Error", "Duplicated ISBN Id, Please enter different Id");
                     return;
                 }
-            }
         }
         StringBuffer displayedNames = new StringBuffer("");
         if (getIsbn().getText() != null && getCopyCount().getText() != null) {
@@ -85,7 +87,7 @@ public class AddBook implements Initializable {
         for (int j = 0; j < selectedAuthors.getCheckedItems().size(); j++) {
             String selectedName = selectedAuthors.getCheckedItems().get(j);
             String[] selectedSplitted = selectedName.split(" ");
-            for (Author a : ApplicationInitialDB.authors) {
+            for (Author a : serviceImp.getAuthors()) {
                 if (a.getFirstName().equals(selectedSplitted[0]) && a.getLastName().equals(selectedSplitted[1])) {
                     authorsArrayList.add(a);
                     displayedNames.append(a.getFirstName() + "  " + a.getLastName() + " ");
@@ -95,7 +97,7 @@ public class AddBook implements Initializable {
 
         book.setAuthorList(authorsArrayList);
         if (book != null) {
-            ApplicationInitialDB.books.add(book);
+            serviceImp.addBook(book);
             LibraryUtil.createNewAlert("Successful action", "Book was added successfully with " + noOfCopies + "copies and selected Authors count : " + authorsArrayList.size());
         }
 
@@ -134,6 +136,22 @@ public class AddBook implements Initializable {
     }
 
     public void initialize(URL location, ResourceBundle resources) {
+        authors.setOnMouseClicked(new EventHandler<MouseEvent>() {
+
+            @Override
+            public void handle(MouseEvent arg0) {
+
+                ArrayList<String> authorsList = new ArrayList<>();
+                for (Author a : serviceImp.getAuthors()) {
+                    authorsList.add(a.getFirstName() + " " + a.getLastName());
+                    System.out.println(a.getFirstName()+"???????????????????????");
+                }
+                authors.getItems().clear();
+                authors.getItems().addAll(authorsList);
+
+            }
+
+        });
         String days[] =
                 {"7", "21"};
 
@@ -144,7 +162,7 @@ public class AddBook implements Initializable {
 
 
         ArrayList<String> authorsList = new ArrayList<>();
-        for (Author a : ApplicationInitialDB.authors) {
+        for (Author a : serviceImp.getAuthors()) {
             authorsList.add(a.getFirstName() + " " + a.getLastName());
         }
 

@@ -17,7 +17,7 @@
       <Text layoutX="52.0" layoutY="201.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Authors" />
       <Text layoutX="51.0" layoutY="252.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Num Of Copies " />
       <Text layoutX="52.0" layoutY="298.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Checkout Length" />
-      <CheckComboBox fx:id="authors" layoutX="193.0" layoutY="178.0" prefHeight="31.0" prefWidth="291.0" />
+      <CheckComboBox fx:id="authors" layoutX="193.0" layoutY="178.0" prefHeight="31.0" prefWidth="291.0"/>
       <JFXButton layoutX="407.0" layoutY="325.0" onAction="#addBookAction" prefHeight="31.0" prefWidth="77.0" text="Add" />
       <Text layoutX="382.0" layoutY="297.0" strokeType="OUTSIDE" strokeWidth="0.0" text="days" />
       <ComboBox fx:id="checkOutDays" layoutX="193.0" layoutY="280.0" prefWidth="150.0" />

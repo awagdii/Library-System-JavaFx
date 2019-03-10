@@ -8,7 +8,7 @@
    <children>
        <JFXTabPane prefHeight="545.0" prefWidth="843.0">
          <tabs>
-             <Tab text="Check out Book">
+             <Tab text="CheckOut Book">
                  <content>
                      <fx:include source="/mum/mpp/view/checkOutBook.fxml"/>
                  </content>
@@ -23,14 +23,19 @@
                      <fx:include source="/mum/mpp/view/addCopy.fxml"/>
                  </content>
              </Tab>
-             <Tab text="Add Library Member">
+             <Tab text="Add Lib Member">
                  <content>
                      <fx:include source="/mum/mpp/view/libraryMember.fxml"/>
                  </content>
              </Tab>
-             <Tab text="Display Library Member Info">
+             <Tab text="Display Lib Member">
                  <content>
                      <fx:include source="/mum/mpp/view/displaylibraryMember.fxml"/>
+                 </content>
+             </Tab>
+             <Tab text="Add Author">
+                 <content>
+                     <fx:include source="/mum/mpp/view/AddAuthor.fxml"/>
                  </content>
              </Tab>
          </tabs>

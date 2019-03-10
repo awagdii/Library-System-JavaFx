@@ -3,20 +3,16 @@ package application;
 import com.sun.javafx.application.LauncherImpl;
 import javafx.application.Application;
 import javafx.stage.Stage;
+import mum.mpp.business.ServicesImp;
 import mum.mpp.controller.Login;
 import mum.mpp.util.SplashScreenLoader;
-import mum.mpp.model.ApplicationInitialDB;
+import mum.mpp.dao.ApplicationInitialDB;
 
 
 public class Main extends Application {
     public static void main(String[] args) {
-        ApplicationInitialDB.loadInitialDB();
-        if (ApplicationInitialDB.books != null && ApplicationInitialDB.books.isEmpty()) {
-            ApplicationInitialDB.prepareSomeInitialData();
-            ApplicationInitialDB.loadInitialDB();
-        }
+        ServicesImp.getServicesImp().loadInitialDB();
         LauncherImpl.launchApplication(Login.class, SplashScreenLoader.class, args);
-
     }
 
     @Override

@@ -31,7 +31,7 @@ public class Login extends Application {
     @FXML
     private Label errorLabel;
 
-    private static IServices services = new ServicesImp();
+    private static IServices services = ServicesImp.getServicesImp();
 
     @Override
     public void start(Stage primaryStage) throws Exception {

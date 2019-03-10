@@ -9,7 +9,7 @@
 <?import javafx.scene.text.Text?>
 <AnchorPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
-            fx:controller="mum.mpp.controller.AddLibrarian"
+            fx:controller="mum.mpp.controller.AddAuthor"
             prefHeight="400.0" prefWidth="600.0">
     <children>
         <Text layoutX="42.0" layoutY="73.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Add Librarian" />

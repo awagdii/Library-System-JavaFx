@@ -54,8 +54,8 @@ public class Book implements Serializable {
     }
 
 
-    public void addBookCopy(String copyId, Book book) {
-        copyList.add(new BookCopy(copyId, this));
+    public void addBookCopy(String copyId,Book book) {
+        copyList.add(new BookCopy(copyId, book));
     }
 
     public BookCopy getAvailableCopy() {
