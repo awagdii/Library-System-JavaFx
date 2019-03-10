@@ -13,7 +13,6 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import mum.mpp.model.ApplicationInitialDB;
 import mum.mpp.model.DisplayLibraryMemberTableView;
 import mum.mpp.model.LibraryMember;
-import mum.mpp.model.CheckOutEntryTableView;
 import mum.mpp.util.LibraryUtil;
 
 import java.net.URL;
