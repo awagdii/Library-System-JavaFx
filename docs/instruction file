@@ -1,0 +1,24 @@
+This is a file to clearify how to test this code
+
+1-Go to Main Class at application package
+2-run main class a  login page will pop up
+3-login with one of the predefined users
+ Super Administrator
+ user name : "superadmin"
+ password : "superadmin"
+ Or Administrator
+ user name : "admin"
+ password : "admin"
+ Or Librarian
+ user name :"librarian"
+ password  : "librarian"
+
+4-you can proceed for doing your actions (Add Liberary Member / Add Book / Check out Book / Display Library member info / Add Author) based on
+the User Authorization level
+
+Librarian : Check Out books Only
+Administrator :  Add Liberary Member / Add Book / Add Book Copy
+Super Administrator : Add Liberary Memeber / Add Book / Add Book Copy / Display Member / Add Author
+
+
+
