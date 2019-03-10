@@ -11,8 +11,9 @@ public class CheckOutEntryTableView {
     private SimpleStringProperty borrowDate;
     private SimpleStringProperty dueDate;
     private SimpleStringProperty copyId;
+    private SimpleStringProperty overDue;
 
-    public CheckOutEntryTableView(String firstname, String lastname, String bookTitle, String bookIsbn, String borrowDate, String dueDate, String copyId) {
+    public CheckOutEntryTableView(String firstname, String lastname, String bookTitle, String bookIsbn, String borrowDate, String dueDate, String copyId,String overDue) {
         this.firstname = new SimpleStringProperty(firstname);
         this.lastname = new SimpleStringProperty(lastname);
         this.bookTitle = new SimpleStringProperty(bookTitle);
@@ -20,6 +21,7 @@ public class CheckOutEntryTableView {
         this.borrowDate = new SimpleStringProperty(borrowDate);
         this.dueDate = new SimpleStringProperty(dueDate);
         this.copyId = new SimpleStringProperty(copyId);
+        this.overDue = new SimpleStringProperty(overDue);
     }
 
     public String getFirstname() {
@@ -104,5 +106,17 @@ public class CheckOutEntryTableView {
 
     public void setCopyId(String copyId) {
         this.copyId.set(copyId);
+    }
+
+    public String getOverDue() {
+        return overDue.get();
+    }
+
+    public SimpleStringProperty overDueProperty() {
+        return overDue;
+    }
+
+    public void setOverDue(String overDue) {
+        this.overDue.set(overDue);
     }
 }

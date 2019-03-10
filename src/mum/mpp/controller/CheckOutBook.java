@@ -46,6 +46,8 @@ public class CheckOutBook implements Initializable {
     private TableColumn<CheckOutEntryTableView, String> dueDate;
     @FXML
     private TableColumn<CheckOutEntryTableView, String> copyId;
+    @FXML
+    private TableColumn<CheckOutEntryTableView, String> overDue;
 
     ServicesImp servicesImp=ServicesImp.getServicesImp();
 
@@ -82,12 +84,11 @@ public class CheckOutBook implements Initializable {
                 ApplicationInitialDB.saveAllBooks();
                 LibraryUtil.createNewAlert("Checked Out Successfully",
                         "Book Copy id :" + bookCopy.getCopyId() + "\n checked out to  " + selectedLibraryMember.getFirstName() + "  " + selectedLibraryMember.getLastName());
-                updateCheckOutRecordObservableList(selectedLibraryMember.getCheckOutRecord().getCheckOutEntries());
 
             } else {
                 LibraryUtil.createNewAlert("No Available Copies !", "Sorry There is no available copies for this Book, please choose another book");
             }
-
+            updateCheckOutRecordObservableList(selectedLibraryMember.getCheckOutRecord().getCheckOutEntries());
         }
 
     }
@@ -104,7 +105,7 @@ public class CheckOutBook implements Initializable {
             String dueDate = checkoutEntry.getDueDate().toString();
             String copyId = checkoutEntry.getBookCopy().getCopyId();
 
-            checkOutEntryTableViews.add(new CheckOutEntryTableView(firstname, lastname, bookTitle, bookIsbn, borrowDate, dueDate, copyId));
+            checkOutEntryTableViews.add(new CheckOutEntryTableView(firstname, lastname, bookTitle, bookIsbn, borrowDate, dueDate, copyId,checkForOverDue(checkoutEntry)));
         }
         observableList.addAll(checkOutEntryTableViews);
         tbData.setItems(observableList);
@@ -114,6 +115,12 @@ public class CheckOutBook implements Initializable {
     // add your data here from any source
     private ObservableList<CheckOutEntryTableView> observableList = FXCollections.observableArrayList();
 
+    private String checkForOverDue(CheckoutEntry checkoutEntry ){
+        if (checkoutEntry.getDueDate().compareTo(LocalDate.now())==-1){
+            return "YES";
+        }
+        return "NO";
+    }
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         firstname.setCellValueFactory(new PropertyValueFactory<>("Firstname"));
@@ -123,6 +130,7 @@ public class CheckOutBook implements Initializable {
         borrowDate.setCellValueFactory(new PropertyValueFactory<>("borrowDate"));
         dueDate.setCellValueFactory(new PropertyValueFactory<>("dueDate"));
         copyId.setCellValueFactory(new PropertyValueFactory<>("copyId"));
+        overDue.setCellValueFactory(new PropertyValueFactory<>("overDue"));
         tbData.setItems(observableList);
     }
 
